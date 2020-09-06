@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yzy.pmservice.mapper.EmployeeMapper" >
+  <resultMap id="BaseResultMap" type="com.yzy.pmservice.pojo.Employee" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="gender" property="gender" jdbcType="CHAR" />
+    <result column="birthday" property="birthday" jdbcType="DATE" />
+    <result column="idCard" property="idcard" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="people" property="people" jdbcType="VARCHAR" />
+    <result column="car" property="car" jdbcType="VARCHAR" />
+    <result column="reno" property="reno" jdbcType="CHAR" />
+    <result column="price" property="price" jdbcType="VARCHAR" />
+    <result column="looktime" property="looktime" jdbcType="VARCHAR" />
+    <result column="intr" property="intr" jdbcType="CHAR" />
+    <result column="phone2" property="phone2" jdbcType="VARCHAR" />
+    <result column="xuequ" property="xuequ" jdbcType="VARCHAR" />
+    <result column="jsjt1" property="jsjt1" jdbcType="VARCHAR" />
+    <result column="jsjt2" property="jsjt2" jdbcType="VARCHAR" />
+    <result column="jsjt3" property="jsjt3" jdbcType="VARCHAR" />
+    <result column="xingz" property="xingz" jdbcType="VARCHAR" />
+    <result column="beginDate" property="begindate" jdbcType="DATE" />
+    <result column="workID" property="workid" jdbcType="CHAR" />
+  </resultMap>
+  <resultMap id="AllEmployeeInfo" type="com.yzy.pmservice.pojo.Employee" extends="BaseResultMap">
+
+
+
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, name, gender, birthday, idCard, email, xuequ, jsjt1, jsjt2, jsjt3,
+    people, beginDate, workID, car, reno, price, looktime, intr, phone2, xingz
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />
+    from employee
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from employee
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.yzy.pmservice.pojo.Employee" >
+    insert into employee (id, name, gender,
+      birthday, idCard, email, phone2, xuequ, jsjt1, jsjt2, jsjt3,
+      people, beginDate, workID, car, reno, price, looktime, intr, xingz
+      )
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{gender,jdbcType=CHAR}, #{xuequ,jdbcType=VARCHAR}, #{jsjt1,jdbcType=VARCHAR},
+      #{birthday,jdbcType=DATE}, #{idcard,jdbcType=CHAR}, #{email,jdbcType=VARCHAR}, #{phone2,jdbcType=VARCHAR}, #{jsjt2,jdbcType=VARCHAR},
+      #{people,jdbcType=VARCHAR}, #{begindate,jdbcType=DATE}, #{workid,jdbcType=CHAR}, #{jsjt3,jdbcType=VARCHAR},
+      #{car,jdbcType=VARCHAR}, #{reno,jdbcType=CHAR}, #{price,jdbcType=VARCHAR}, #{looktime,jdbcType=VARCHAR}, #{intr,jdbcType=CHAR}, #{xingz,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.yzy.pmservice.pojo.Employee" >
+    insert into employee
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="gender != null" >
+        gender,
+      </if>
+      <if test="birthday != null" >
+        birthday,
+      </if>
+      <if test="idcard != null" >
+        idCard,
+      </if>
+      <if test="email != null" >
+        email,
+      </if>
+      <if test="people != null" >
+        people,
+      </if>
+      <if test="phone2 != null" >
+        phone2,
+      </if>
+      <if test="begindate != null" >
+        beginDate,
+      </if>
+      <if test="workid != null" >
+        workID,
+      </if>
+      <if test="car != null" >
+        car,
+      </if>
+      <if test="reno != null" >
+        reno,
+      </if>
+      <if test="price != null" >
+        price,
+      </if>
+      <if test="looktime != null" >
+        looktime,
+      </if>
+      <if test="intr != null" >
+        intr,
+      </if>
+      <if test="xuequ != null" >
+        xuequ,
+      </if>
+      <if test="jsjt1 != null" >
+        jsjt1,
+      </if>
+      <if test="jsjt2 != null" >
+        jsjt2,
+      </if>
+      <if test="jsjt3 != null" >
+        jsjt3,
+      </if>
+      <if test="xingz != null" >
+        xingz,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null" >
+        #{gender,jdbcType=CHAR},
+      </if>
+      <if test="birthday != null" >
+        #{birthday,jdbcType=DATE},
+      </if>
+      <if test="idcard != null" >
+        #{idcard,jdbcType=CHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="people != null" >
+        #{people,jdbcType=VARCHAR},
+      </if>
+      <if test="phone2 != null" >
+        #{phone2,jdbcType=VARCHAR},
+      </if>
+      <if test="begindate != null" >
+        #{begindate,jdbcType=DATE},
+      </if>
+      <if test="workid != null" >
+        #{workid,jdbcType=CHAR},
+      </if>
+      <if test="car != null" >
+        #{car,jdbcType=VARCHAR},
+      </if>
+      <if test="reno != null" >
+        #{reno,jdbcType=CHAR},
+      </if>
+      <if test="price != null" >
+        #{price,jdbcType=VARCHAR},
+      </if>
+      <if test="looktime != null" >
+        #{looktime,jdbcType=VARCHAR},
+      </if>
+      <if test="intr != null" >
+        #{intr,jdbcType=CHAR},
+      </if>
+      <if test="xuequ != null" >
+        #{xuequ,jdbcType=VARCHAR},
+      </if>
+      <if test="jsjt1 != null" >
+        #{jsjt1,jdbcType=VARCHAR},
+      </if>
+      <if test="jsjt2 != null" >
+        #{jsjt2,jdbcType=VARCHAR},
+      </if>
+      <if test="jsjt3 != null" >
+        #{jsjt3,jdbcType=VARCHAR},
+      </if>
+      <if test="xingz != null" >
+        #{xingz,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yzy.pmservice.pojo.Employee" >
+    update employee
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null" >
+        gender = #{gender,jdbcType=CHAR},
+      </if>
+      <if test="birthday != null" >
+        birthday = #{birthday,jdbcType=DATE},
+      </if>
+      <if test="idcard != null" >
+        idCard = #{idcard,jdbcType=CHAR},
+      </if>
+      <if test="email != null" >
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="people != null" >
+        people = #{people,jdbcType=VARCHAR},
+      </if>
+      <if test="phone2 != null" >
+        phone = #{phone2,jdbcType=VARCHAR},
+      </if>
+      <if test="begindate != null" >
+        beginDate = #{begindate,jdbcType=DATE},
+      </if>
+      <if test="workid != null" >
+        workID = #{workid,jdbcType=CHAR},
+      </if>
+      <if test="car != null" >
+        car = #{car,jdbcType=VARCHAR},
+      </if>
+      <if test="reno != null" >
+        reno = #{reno,jdbcType=CHAR},
+      </if>
+      <if test="price != null" >
+        price = #{price,jdbcType=VARCHAR},
+      </if>
+      <if test="looktime != null" >
+        looktime = #{looktime,jdbcType=VARCHAR},
+      </if>
+      <if test="xuequ != null" >
+        xuequ = #{xuequ,jdbcType=VARCHAR},
+      </if>
+      <if test="jsjt1 != null" >
+        jsjt1 = #{jsjt1,jdbcType=VARCHAR},
+      </if>
+      <if test="jsjt2 != null" >
+        jsjt2 = #{jsjt2,jdbcType=VARCHAR},
+      </if>
+      <if test="jsjt3 != null" >
+        jsjt3 = #{jsjt3,jdbcType=VARCHAR},
+      </if>
+      <if test="xingz != null" >
+        xingz = #{xingz,jdbcType=VARCHAR},
+      </if>
+      <if test="intr != null" >
+        intr = #{intr,jdbcType=CHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yzy.pmservice.pojo.Employee" >
+    update employee
+    set name = #{name,jdbcType=VARCHAR},
+      gender = #{gender,jdbcType=CHAR},
+      birthday = #{birthday,jdbcType=DATE},
+      idCard = #{idcard,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      people = #{people,jdbcType=VARCHAR},
+      phone2 = #{phone2,jdbcType=VARCHAR},
+      beginDate = #{begindate,jdbcType=DATE},
+      workID = #{workid,jdbcType=CHAR},
+      car = #{car,jdbcType=VARCHAR},
+      reno = #{reno,jdbcType=CHAR},
+      price = #{price,jdbcType=VARCHAR},
+      looktime = #{looktime,jdbcType=VARCHAR},
+      xuequ = #{xuequ,jdbcType=VARCHAR},
+      jsjt1 = #{jsjt1,jdbcType=VARCHAR},
+      jsjt2 = #{jsjt2,jdbcType=VARCHAR},
+      jsjt3 = #{jsjt3,jdbcType=VARCHAR},
+      xingz = #{xingz,jdbcType=VARCHAR},
+      intr = #{intr,jdbcType=CHAR},
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="getEmployeeByPage" resultMap="AllEmployeeInfo">
+    SELECT e.* from employee e where 1=1
+    <if test="keyword!=null and keyword!=''">
+      and e.name like concat('%',#{keyword},'%')
+    </if>
+     limit #{page},#{size}
+  </select>
+  <select id="getTotal" resultType="java.lang.Long">
+    select count(*) from employee
+    <if test="keyword!=null and keyword!=''">
+      where name like concat('%',#{keyword},'%')
+    </if>
+  </select>
+  <select id="maxWorkID" resultType="java.lang.Integer">
+    SELECT MAX(workID) FROM employee
+  </select>
+</mapper>
