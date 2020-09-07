@@ -16,6 +16,7 @@
     <result column="intr" property="intr" jdbcType="CHAR" />
     <result column="phone2" property="phone2" jdbcType="VARCHAR" />
     <result column="xuequ" property="xuequ" jdbcType="VARCHAR" />
+    <result column="remarks" property="remarks" jdbcType="VARCHAR" />
     <result column="xingz" property="xingz" jdbcType="VARCHAR" />
     <result column="jsjt1" property="jsjt1" jdbcType="VARCHAR" />
     <result column="jsjt2" property="jsjt2" jdbcType="VARCHAR" />
@@ -30,7 +31,7 @@
   </resultMap>
   <sql id="Base_Column_List" >
     id, name, fangs, birthday, idCard, email, xuequ, jsjt1, jsjt2, jsjt3, xingz,
-    people, beginDate, workid, car, reno, price, looktime, intr, phone2
+    people, beginDate, workid, car, reno, price, looktime, intr, phone2, remarks
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select
@@ -45,11 +46,11 @@
   <insert id="insert" parameterType="com.yzy.pmservice.pojo.Chuzu" >
     insert into chuzu (id, name, fangs,
       birthday, idCard, email, phone2, xuequ, jsjt1, jsjt2, jsjt3, xingz,
-      people, beginDate, workid, car, reno, price, looktime, intr
+      people, beginDate, workid, car, reno, price, looktime, intr, remarks
       )
     values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{fangs,jdbcType=CHAR}, #{xuequ,jdbcType=VARCHAR}, #{jsjt1,jdbcType=VARCHAR},
       #{birthday,jdbcType=DATE}, #{idcard,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{phone2,jdbcType=VARCHAR}, #{jsjt2,jdbcType=VARCHAR},
-      #{people,jdbcType=VARCHAR}, #{begindate,jdbcType=DATE}, #{workid,jdbcType=CHAR}, #{jsjt3,jdbcType=VARCHAR},
+      #{people,jdbcType=VARCHAR}, #{begindate,jdbcType=DATE}, #{workid,jdbcType=CHAR}, #{jsjt3,jdbcType=VARCHAR}, #{remarks,jdbcType=VARCHAR},
       #{car,jdbcType=VARCHAR}, #{reno,jdbcType=CHAR}, #{price,jdbcType=VARCHAR}, #{looktime,jdbcType=VARCHAR}, #{intr,jdbcType=CHAR},
       #{xingz,jdbcType=VARCHAR}
       )
@@ -117,6 +118,9 @@
       <if test="xingz != null" >
         xingz,
       </if>
+      <if test="remarks != null" >
+        remarks,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -178,6 +182,9 @@
       </if>
       <if test="xingz != null" >
         #{xingz,jdbcType=VARCHAR},
+      </if>
+      <if test="remarks != null" >
+        #{remarks,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -241,6 +248,9 @@
       <if test="xingz != null" >
         xingz = #{xingz,jdbcType=VARCHAR},
       </if>
+      <if test="remarks != null" >
+        remarks = #{remarks,jdbcType=VARCHAR},
+      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
@@ -265,6 +275,7 @@
       jsjt3 = #{jsjt3,jdbcType=VARCHAR},
       intr = #{intr,jdbcType=CHAR},
       xingz = #{xingz,jdbcType=VARCHAR},
+      remarks = #{remarks,jdbcType=VARCHAR},
     where id = #{id,jdbcType=INTEGER}
   </update>
   <select id="getChuzuByPage" resultMap="AllChuzuInfo">

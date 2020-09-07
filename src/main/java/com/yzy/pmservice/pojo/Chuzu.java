@@ -75,6 +75,17 @@ public class Chuzu {
         this.xingz = xingz;
     }
 
+    /** 备注*/
+    private String remarks;
+
+    public String getRemarks() {
+        return remarks;
+    }
+
+    public void setRemarks(String remarks) {
+        this.remarks = remarks;
+    }
+
     public String getJsjt2() {
         return jsjt2;
     }

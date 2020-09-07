@@ -64,8 +64,19 @@ public class Employee {
     /** 几卫*/
     private String jsjt3;
 
-    /** 房源性质*/
+    /** 房源状态*/
     private String xingz;
+
+    /** 备注*/
+    private String remarks;
+
+    public String getRemarks() {
+        return remarks;
+    }
+
+    public void setRemarks(String remarks) {
+        this.remarks = remarks;
+    }
 
     public String getXingz() {
         return xingz;
