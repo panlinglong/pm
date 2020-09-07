@@ -6,7 +6,7 @@
     <result column="name" property="name" jdbcType="VARCHAR" />
     <result column="fangs" property="fangs" jdbcType="VARCHAR" />
     <result column="birthday" property="birthday" jdbcType="DATE" />
-    <result column="idCard" property="idcard" jdbcType="CHAR" />
+    <result column="idCard" property="idcard" jdbcType="VARCHAR" />
     <result column="email" property="email" jdbcType="VARCHAR" />
     <result column="people" property="people" jdbcType="VARCHAR" />
     <result column="car" property="car" jdbcType="VARCHAR" />
@@ -21,7 +21,7 @@
     <result column="jsjt2" property="jsjt2" jdbcType="VARCHAR" />
     <result column="jsjt3" property="jsjt3" jdbcType="VARCHAR" />
     <result column="beginDate" property="begindate" jdbcType="DATE" />
-    <result column="workID" property="workid" jdbcType="CHAR" />
+    <result column="workid" property="workid" jdbcType="CHAR" />
   </resultMap>
   <resultMap id="AllChuzuInfo" type="com.yzy.pmservice.pojo.Chuzu" extends="BaseResultMap">
 
@@ -30,7 +30,7 @@
   </resultMap>
   <sql id="Base_Column_List" >
     id, name, fangs, birthday, idCard, email, xuequ, jsjt1, jsjt2, jsjt3, xingz,
-    people, beginDate, workID, car, reno, price, looktime, intr, phone2
+    people, beginDate, workid, car, reno, price, looktime, intr, phone2
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select
@@ -45,10 +45,10 @@
   <insert id="insert" parameterType="com.yzy.pmservice.pojo.Chuzu" >
     insert into chuzu (id, name, fangs,
       birthday, idCard, email, phone2, xuequ, jsjt1, jsjt2, jsjt3, xingz,
-      people, beginDate, workID, car, reno, price, looktime, intr
+      people, beginDate, workid, car, reno, price, looktime, intr
       )
     values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{fangs,jdbcType=CHAR}, #{xuequ,jdbcType=VARCHAR}, #{jsjt1,jdbcType=VARCHAR},
-      #{birthday,jdbcType=DATE}, #{idcard,jdbcType=CHAR}, #{email,jdbcType=VARCHAR}, #{phone2,jdbcType=VARCHAR}, #{jsjt2,jdbcType=VARCHAR},
+      #{birthday,jdbcType=DATE}, #{idcard,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{phone2,jdbcType=VARCHAR}, #{jsjt2,jdbcType=VARCHAR},
       #{people,jdbcType=VARCHAR}, #{begindate,jdbcType=DATE}, #{workid,jdbcType=CHAR}, #{jsjt3,jdbcType=VARCHAR},
       #{car,jdbcType=VARCHAR}, #{reno,jdbcType=CHAR}, #{price,jdbcType=VARCHAR}, #{looktime,jdbcType=VARCHAR}, #{intr,jdbcType=CHAR},
       #{xingz,jdbcType=VARCHAR}
@@ -85,7 +85,7 @@
         beginDate,
       </if>
       <if test="workid != null" >
-        workID,
+        workid,
       </if>
       <if test="car != null" >
         car,
@@ -132,7 +132,7 @@
         #{birthday,jdbcType=DATE},
       </if>
       <if test="idcard != null" >
-        #{idcard,jdbcType=CHAR},
+        #{idcard,jdbcType=VARCHAR},
       </if>
       <if test="email != null" >
         #{email,jdbcType=VARCHAR},
@@ -194,7 +194,7 @@
         birthday = #{birthday,jdbcType=DATE},
       </if>
       <if test="idcard != null" >
-        idCard = #{idcard,jdbcType=CHAR},
+        idCard = #{idcard,jdbcType=VARCHAR},
       </if>
       <if test="email != null" >
         email = #{email,jdbcType=VARCHAR},
@@ -203,13 +203,13 @@
         people = #{people,jdbcType=VARCHAR},
       </if>
       <if test="phone2 != null" >
-        phone = #{phone2,jdbcType=VARCHAR},
+        phone2 = #{phone2,jdbcType=VARCHAR},
       </if>
       <if test="begindate != null" >
         beginDate = #{begindate,jdbcType=DATE},
       </if>
       <if test="workid != null" >
-        workID = #{workid,jdbcType=CHAR},
+        workid = #{workid,jdbcType=CHAR},
       </if>
       <if test="car != null" >
         car = #{car,jdbcType=VARCHAR},
@@ -249,12 +249,12 @@
     set name = #{name,jdbcType=VARCHAR},
       fangs = #{fangs,jdbcType=CHAR},
       birthday = #{birthday,jdbcType=DATE},
-      idCard = #{idcard,jdbcType=CHAR},
+      idCard = #{idcard,jdbcType=VARCHAR},
       email = #{email,jdbcType=VARCHAR},
       people = #{people,jdbcType=VARCHAR},
       phone2 = #{phone2,jdbcType=VARCHAR},
       beginDate = #{begindate,jdbcType=DATE},
-      workID = #{workid,jdbcType=CHAR},
+      workid = #{workid,jdbcType=CHAR},
       car = #{car,jdbcType=VARCHAR},
       reno = #{reno,jdbcType=CHAR},
       price = #{price,jdbcType=VARCHAR},
@@ -281,6 +281,6 @@
     </if>
   </select>
   <select id="maxWorkID" resultType="java.lang.Integer">
-    SELECT MAX(workID) FROM chuzu
+    SELECT MAX(workid) FROM chuzu
   </select>
 </mapper>

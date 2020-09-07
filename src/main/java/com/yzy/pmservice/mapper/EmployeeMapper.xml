@@ -21,7 +21,7 @@
     <result column="jsjt3" property="jsjt3" jdbcType="VARCHAR" />
     <result column="xingz" property="xingz" jdbcType="VARCHAR" />
     <result column="beginDate" property="begindate" jdbcType="DATE" />
-    <result column="workID" property="workid" jdbcType="CHAR" />
+    <result column="workid" property="workid" jdbcType="CHAR" />
   </resultMap>
   <resultMap id="AllEmployeeInfo" type="com.yzy.pmservice.pojo.Employee" extends="BaseResultMap">
 
@@ -30,7 +30,7 @@
   </resultMap>
   <sql id="Base_Column_List" >
     id, name, gender, birthday, idCard, email, xuequ, jsjt1, jsjt2, jsjt3,
-    people, beginDate, workID, car, reno, price, looktime, intr, phone2, xingz
+    people, beginDate, workid, car, reno, price, looktime, intr, phone2, xingz
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select
@@ -45,7 +45,7 @@
   <insert id="insert" parameterType="com.yzy.pmservice.pojo.Employee" >
     insert into employee (id, name, gender,
       birthday, idCard, email, phone2, xuequ, jsjt1, jsjt2, jsjt3,
-      people, beginDate, workID, car, reno, price, looktime, intr, xingz
+      people, beginDate, workid, car, reno, price, looktime, intr, xingz
       )
     values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{gender,jdbcType=CHAR}, #{xuequ,jdbcType=VARCHAR}, #{jsjt1,jdbcType=VARCHAR},
       #{birthday,jdbcType=DATE}, #{idcard,jdbcType=CHAR}, #{email,jdbcType=VARCHAR}, #{phone2,jdbcType=VARCHAR}, #{jsjt2,jdbcType=VARCHAR},
@@ -84,7 +84,7 @@
         beginDate,
       </if>
       <if test="workid != null" >
-        workID,
+        workid,
       </if>
       <if test="car != null" >
         car,
@@ -202,13 +202,13 @@
         people = #{people,jdbcType=VARCHAR},
       </if>
       <if test="phone2 != null" >
-        phone = #{phone2,jdbcType=VARCHAR},
+        phone2 = #{phone2,jdbcType=VARCHAR},
       </if>
       <if test="begindate != null" >
         beginDate = #{begindate,jdbcType=DATE},
       </if>
       <if test="workid != null" >
-        workID = #{workid,jdbcType=CHAR},
+        workid = #{workid,jdbcType=CHAR},
       </if>
       <if test="car != null" >
         car = #{car,jdbcType=VARCHAR},
@@ -253,7 +253,7 @@
       people = #{people,jdbcType=VARCHAR},
       phone2 = #{phone2,jdbcType=VARCHAR},
       beginDate = #{begindate,jdbcType=DATE},
-      workID = #{workid,jdbcType=CHAR},
+      workid = #{workid,jdbcType=CHAR},
       car = #{car,jdbcType=VARCHAR},
       reno = #{reno,jdbcType=CHAR},
       price = #{price,jdbcType=VARCHAR},
@@ -280,6 +280,6 @@
     </if>
   </select>
   <select id="maxWorkID" resultType="java.lang.Integer">
-    SELECT MAX(workID) FROM employee
+    SELECT MAX(workid) FROM employee
   </select>
 </mapper>
