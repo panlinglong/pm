@@ -5,7 +5,7 @@
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="name" property="name" jdbcType="VARCHAR" />
     <result column="fangs" property="fangs" jdbcType="VARCHAR" />
-    <result column="birthday" property="birthday" jdbcType="DATE" />
+    <result column="endDate" property="endDate" jdbcType="DATE" />
     <result column="idCard" property="idcard" jdbcType="VARCHAR" />
     <result column="email" property="email" jdbcType="VARCHAR" />
     <result column="people" property="people" jdbcType="VARCHAR" />
@@ -30,7 +30,7 @@
 
   </resultMap>
   <sql id="Base_Column_List" >
-    id, name, fangs, birthday, idCard, email, xuequ, jsjt1, jsjt2, jsjt3, xingz,
+    id, name, fangs, endDate, idCard, email, xuequ, jsjt1, jsjt2, jsjt3, xingz,
     people, beginDate, workid, car, reno, price, looktime, intr, phone2, remarks
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
@@ -45,11 +45,11 @@
   </delete>
   <insert id="insert" parameterType="com.yzy.pmservice.pojo.Chuzu" >
     insert into chuzu (id, name, fangs,
-      birthday, idCard, email, phone2, xuequ, jsjt1, jsjt2, jsjt3, xingz,
+      endDate, idCard, email, phone2, xuequ, jsjt1, jsjt2, jsjt3, xingz,
       people, beginDate, workid, car, reno, price, looktime, intr, remarks
       )
     values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{fangs,jdbcType=CHAR}, #{xuequ,jdbcType=VARCHAR}, #{jsjt1,jdbcType=VARCHAR},
-      #{birthday,jdbcType=DATE}, #{idcard,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{phone2,jdbcType=VARCHAR}, #{jsjt2,jdbcType=VARCHAR},
+      #{endDate,jdbcType=DATE}, #{idcard,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{phone2,jdbcType=VARCHAR}, #{jsjt2,jdbcType=VARCHAR},
       #{people,jdbcType=VARCHAR}, #{begindate,jdbcType=DATE}, #{workid,jdbcType=CHAR}, #{jsjt3,jdbcType=VARCHAR}, #{remarks,jdbcType=VARCHAR},
       #{car,jdbcType=VARCHAR}, #{reno,jdbcType=CHAR}, #{price,jdbcType=VARCHAR}, #{looktime,jdbcType=VARCHAR}, #{intr,jdbcType=CHAR},
       #{xingz,jdbcType=VARCHAR}
@@ -67,8 +67,8 @@
       <if test="fangs != null" >
         fangs,
       </if>
-      <if test="birthday != null" >
-        birthday,
+      <if test="endDate != null" >
+        endDate,
       </if>
       <if test="idcard != null" >
         idCard,
@@ -132,8 +132,8 @@
       <if test="fangs != null" >
         #{fangs,jdbcType=CHAR},
       </if>
-      <if test="birthday != null" >
-        #{birthday,jdbcType=DATE},
+      <if test="endDate != null" >
+        #{endDate,jdbcType=DATE},
       </if>
       <if test="idcard != null" >
         #{idcard,jdbcType=VARCHAR},
@@ -197,8 +197,8 @@
       <if test="fangs != null" >
         fangs = #{fangs,jdbcType=CHAR},
       </if>
-      <if test="birthday != null" >
-        birthday = #{birthday,jdbcType=DATE},
+      <if test="endDate != null" >
+        endDate = #{endDate,jdbcType=DATE},
       </if>
       <if test="idcard != null" >
         idCard = #{idcard,jdbcType=VARCHAR},
@@ -258,7 +258,7 @@
     update chuzu
     set name = #{name,jdbcType=VARCHAR},
       fangs = #{fangs,jdbcType=CHAR},
-      birthday = #{birthday,jdbcType=DATE},
+      endDate = #{endDate,jdbcType=DATE},
       idCard = #{idcard,jdbcType=VARCHAR},
       email = #{email,jdbcType=VARCHAR},
       people = #{people,jdbcType=VARCHAR},

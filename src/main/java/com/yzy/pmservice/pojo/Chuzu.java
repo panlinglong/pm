@@ -16,7 +16,7 @@ public class Chuzu {
 
     /**不用 */
     @JsonFormat(pattern = "yyyy-MM-dd",timezone = "Asia/Shanghai")
-    private Date birthday;
+    private Date endDate;
 
     /** 房号*/
     private String idcard;
@@ -182,12 +182,12 @@ public class Chuzu {
         this.fangs = fangs == null ? null : fangs.trim();
     }
 
-    public Date getBirthday() {
-        return birthday;
+    public Date getEndDate() {
+        return endDate;
     }
 
-    public void setBirthday(Date birthday) {
-        this.birthday = birthday;
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
     }
 
     public String getIdcard() {
