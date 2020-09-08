@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yzy.pmservice.mapper.NewinfoMapper" >
+  <resultMap id="BaseResultMap" type="com.yzy.pmservice.pojo.Newinfo" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="name1" property="name1" jdbcType="VARCHAR" />
+    <result column="name2" property="name2" jdbcType="VARCHAR" />
+    <result column="dates" property="dates" jdbcType="DATE" />
+
+    <result column="mianji" property="mianji" jdbcType="VARCHAR" />
+    <result column="people1" property="people1" jdbcType="VARCHAR" />
+    <result column="people2" property="people2" jdbcType="VARCHAR" />
+
+
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
+    <result column="remarks" property="remarks" jdbcType="VARCHAR" />
+    <result column="workid" property="workid" jdbcType="CHAR" />
+  </resultMap>
+  <resultMap id="AllNewinfoInfo" type="com.yzy.pmservice.pojo.Newinfo" extends="BaseResultMap">
+
+
+
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, name1, dates, mianji, name2, people1, people2, workid, phone, remarks
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />
+    from newinfo
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from newinfo
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.yzy.pmservice.pojo.Newinfo" >
+    insert into newinfo (id, name1, dates, mianji, name2, people1, people2, workid, phone, remarks
+      )
+    values (#{id,jdbcType=INTEGER}, #{name1,jdbcType=VARCHAR}, #{name2,jdbcType=VARCHAR},
+      #{dates,jdbcType=DATE}, #{people1,jdbcType=VARCHAR}, #{mianji,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR},
+      #{people2,jdbcType=VARCHAR}, #{workid,jdbcType=CHAR}, #{remarks,jdbcType=VARCHAR},
+      )
+  </insert>
+    <insert id="insertSelective" parameterType="com.yzy.pmservice.pojo.Newinfo" >
+    insert into newinfo
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="name1 != null" >
+        name1,
+      </if>
+      <if test="name2 != null" >
+        name2,
+      </if>
+      <if test="dates != null" >
+        dates,
+      </if>
+      <if test="people2 != null" >
+        people2,
+      </if>
+      <if test="mianji != null" >
+        mianji,
+      </if>
+      <if test="people1 != null" >
+        people1,
+      </if>
+      <if test="phone != null" >
+        phone,
+      </if>
+      <if test="workid != null" >
+        workid,
+      </if>
+      <if test="remarks != null" >
+        remarks,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name1 != null" >
+        #{name1,jdbcType=VARCHAR},
+      </if>
+      <if test="name2 != null" >
+        #{name2,jdbcType=VARCHAR},
+      </if>
+      <if test="dates != null" >
+        #{dates,jdbcType=DATE},
+      </if>
+      <if test="people1 != null" >
+        #{people1,jdbcType=VARCHAR},
+      </if>
+      <if test="mianji != null" >
+        #{mianji,jdbcType=VARCHAR},
+      </if>
+      <if test="people2 != null" >
+        #{people2,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="workid != null" >
+        #{workid,jdbcType=CHAR},
+      </if>
+      <if test="remarks != null" >
+        #{remarks,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yzy.pmservice.pojo.Newinfo" >
+    update newinfo
+    <set >
+      <if test="name1 != null" >
+        name1 = #{name1,jdbcType=VARCHAR},
+      </if>
+      <if test="name2 != null" >
+        name2 = #{name2,jdbcType=VARCHAR},
+      </if>
+      <if test="dates != null" >
+        dates = #{dates,jdbcType=DATE},
+      </if>
+      <if test="people1 != null" >
+        people1 = #{people1,jdbcType=VARCHAR},
+      </if>
+      <if test="mianji != null" >
+        mianji = #{mianji,jdbcType=VARCHAR},
+      </if>
+      <if test="people2 != null" >
+        people2 = #{people2,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="workid != null" >
+        workid = #{workid,jdbcType=CHAR},
+      </if>
+      <if test="remarks != null" >
+        remarks = #{remarks,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yzy.pmservice.pojo.Newinfo" >
+    update newinfo
+    set name1 = #{name1,jdbcType=VARCHAR},
+      name2 = #{name2,jdbcType=VARCHAR},
+      dates = #{dates,jdbcType=DATE},
+      people1 = #{people1,jdbcType=VARCHAR},
+      mianji = #{mianji,jdbcType=VARCHAR},
+      people2 = #{people2,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+
+      workid = #{workid,jdbcType=CHAR},
+
+      remarks = #{remarks,jdbcType=VARCHAR},
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="getNewinfoByPage" resultMap="AllNewinfoInfo">
+    SELECT e.* from newinfo e where 1=1
+    <if test="keyword!=null and keyword!=''">
+      and e.name1 like concat('%',#{keyword},'%')
+    </if>
+     limit #{page},#{size}
+  </select>
+  <select id="getTotal" resultType="java.lang.Long">
+    select count(*) from newinfo
+    <if test="keyword!=null and keyword!=''">
+      where name1 like concat('%',#{keyword},'%')
+    </if>
+  </select>
+  <select id="maxWorkID" resultType="java.lang.Integer">
+    SELECT MAX(workid) FROM newinfo
+  </select>
+</mapper>
