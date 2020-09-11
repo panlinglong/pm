@@ -24,12 +24,12 @@ CREATE TABLE `chuzu` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '房源id',
   `name` varchar(10) DEFAULT NULL COMMENT '小区名称',
   `fangs` varchar(10) DEFAULT NULL COMMENT '付款方式',
-  `birthday` date DEFAULT NULL COMMENT '/',
+  `endDate` date DEFAULT NULL COMMENT '到期时间',
   `idCard` varchar(50) DEFAULT NULL COMMENT '房号',
   `email` varchar(20) DEFAULT NULL COMMENT '面积',
   `people` varchar(20) DEFAULT NULL COMMENT '接待人',
-  `beginDate` date DEFAULT NULL COMMENT '/',
-  `workID` char(8) DEFAULT NULL COMMENT '编号',
+  `beginDate` date DEFAULT NULL COMMENT '起租时间',
+  `workid` char(8) DEFAULT NULL COMMENT '编号',
   `reno` char(4) DEFAULT NULL COMMENT '装修毛坯',
   `price` varchar(20) DEFAULT NULL COMMENT '租金',
   `car` varchar(10) DEFAULT NULL COMMENT '车库车位',
@@ -41,13 +41,14 @@ CREATE TABLE `chuzu` (
   `jsjt2` varchar(10) DEFAULT NULL COMMENT '几厅',
   `jsjt3` varchar(10) DEFAULT NULL COMMENT '几卫',
   `xingz` varchar(100) DEFAULT NULL COMMENT '房源性质',
+  `remarks` varchar(100) DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`id`),
-  KEY `workID_key` (`workID`)
+  KEY `workID_key` (`workid`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1950 DEFAULT CHARSET=utf8;
 
 /*Data for the table `chuzu` */
 
-insert  into `chuzu`(`id`,`name`,`fangs`,`birthday`,`idCard`,`email`,`people`,`beginDate`,`workID`,`reno`,`price`,`car`,`looktime`,`intr`,`phone2`,`xuequ`,`jsjt1`,`jsjt2`,`jsjt3`,`xingz`) values (1,'恒大名都','现金','2020-09-03','1-1-501','105','张三',NULL,'10000001','装修','180','12','周末','上门','13599999999','xx中学','3室','2厅','1卫','公司房源'),(1948,'测试','银行卡',NULL,'1-1-1001','120','测试',NULL,'10000002','毛坯','200','12','下午','介绍','15888888888',NULL,'3室','2厅','1卫','中介房源'),(1949,'三港嘉苑','支付宝',NULL,'76-1-1802','110','李四',NULL,'10000003','装修','110','10','周末上午','上门','15388888888',NULL,'3室','2厅','1卫','公司房源');
+insert  into `chuzu`(`id`,`name`,`fangs`,`endDate`,`idCard`,`email`,`people`,`beginDate`,`workid`,`reno`,`price`,`car`,`looktime`,`intr`,`phone2`,`xuequ`,`jsjt1`,`jsjt2`,`jsjt3`,`xingz`,`remarks`) values (1,'恒大名都','现金','2020-11-06','1-1-501','105','张三','2020-09-06','10000001','装修','1800/月','20','周末','上门','13599999999','xx中学','3室','2厅','1卫','未出租','公司房源'),(1948,'测试','银行卡',NULL,'1-1-1001','120','测试',NULL,'10000002','毛坯','200','12','下午','介绍','15888888888',NULL,'3室','2厅','1卫','未出租',NULL),(1949,'三港嘉苑','支付宝',NULL,'76-1-1802','110','李四',NULL,'10000003','装修','110','10','周末上午','上门','15388888888',NULL,'3室','2厅','1卫','未出租',NULL);
 
 /*Table structure for table `department` */
 
@@ -79,8 +80,8 @@ CREATE TABLE `employee` (
   `idCard` varchar(50) DEFAULT NULL COMMENT '房号',
   `email` varchar(20) DEFAULT NULL COMMENT '面积',
   `people` varchar(20) DEFAULT NULL COMMENT '接待人',
-  `beginDate` date DEFAULT NULL COMMENT '/',
-  `workID` char(8) DEFAULT NULL COMMENT '编号',
+  `beginDate` date DEFAULT NULL COMMENT '成交时间',
+  `workid` char(8) DEFAULT NULL COMMENT '编号',
   `reno` char(4) DEFAULT NULL COMMENT '装修毛坯',
   `price` varchar(20) DEFAULT NULL COMMENT '价格',
   `car` varchar(10) DEFAULT NULL COMMENT '车库车位',
@@ -92,13 +93,14 @@ CREATE TABLE `employee` (
   `jsjt2` varchar(10) DEFAULT NULL COMMENT '几厅',
   `jsjt3` varchar(10) DEFAULT NULL COMMENT '几卫',
   `xingz` varchar(100) DEFAULT NULL COMMENT '公司/中介',
+  `remarks` varchar(100) DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`id`),
-  KEY `workID_key` (`workID`)
-) ENGINE=InnoDB AUTO_INCREMENT=1954 DEFAULT CHARSET=utf8;
+  KEY `workID_key` (`workid`)
+) ENGINE=InnoDB AUTO_INCREMENT=1950 DEFAULT CHARSET=utf8;
 
 /*Data for the table `employee` */
 
-insert  into `employee`(`id`,`name`,`gender`,`birthday`,`idCard`,`email`,`people`,`beginDate`,`workID`,`reno`,`price`,`car`,`looktime`,`intr`,`phone2`,`xuequ`,`jsjt1`,`jsjt2`,`jsjt3`,`xingz`) values (1,'恒大名都','否','2020-09-03','1-1-501','105','张三',NULL,'00000001','装修','180','12','周末','上门','13599999999','xx中学','3室','2厅','1卫','公司房源'),(1948,'测试','否',NULL,'1-1-1001','120','测试',NULL,'00000002','毛坯','200','12','下午','介绍','15888888888',NULL,'3室','2厅','1卫','中介房源'),(1949,'三港嘉苑','否',NULL,'76-1-1802','110','李四',NULL,'00000003','装修','110','10','周末上午','上门','15388888888',NULL,'3室','2厅','1卫','公司房源');
+insert  into `employee`(`id`,`name`,`gender`,`birthday`,`idCard`,`email`,`people`,`beginDate`,`workid`,`reno`,`price`,`car`,`looktime`,`intr`,`phone2`,`xuequ`,`jsjt1`,`jsjt2`,`jsjt3`,`xingz`,`remarks`) values (1,'恒大名都','否','2020-09-03','1-1-501','105','张三','2020-09-07','00000001','装修','180','20','','上门','13599999999','xx中学','3室','2厅','1卫','已出售','公司房源'),(1948,'测试','否',NULL,'1-1-1001','120','测试',NULL,'00000002','毛坯','200','12','下午','介绍','15888888888',NULL,'3室','2厅','1卫','未出售',NULL),(1949,'三港嘉苑','否',NULL,'76-1-1802','110','李四',NULL,'00000003','装修','110','10','周末上午','上门','15388888888',NULL,'3室','2厅','1卫','未出售',NULL);
 
 /*Table structure for table `hr` */
 
@@ -157,6 +159,51 @@ CREATE TABLE `joblevel` (
 
 insert  into `joblevel`(`id`,`name`,`titleLevel`,`createDate`,`enabled`) values (9,'P1','正高级','2018-01-11 00:00:00',1),(10,'P2','副高级','2018-01-11 21:19:20',1),(12,'P3','中级','2018-01-11 21:35:39',1),(13,'P4','初级','2018-01-11 00:00:00',0),(14,'M1','正高级','2018-01-14 00:00:00',1),(15,'M2','副高级','2018-01-14 00:00:00',1),(16,'M3','中级','2018-01-14 16:19:14',1),(17,'M4','初级','2018-01-14 16:19:24',1);
 
+/*Table structure for table `kehu` */
+
+DROP TABLE IF EXISTS `kehu`;
+
+CREATE TABLE `kehu` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '房源id',
+  `name` varchar(10) DEFAULT NULL COMMENT '客户姓名',
+  `gender` char(4) DEFAULT NULL COMMENT '性别',
+  `birthday` date DEFAULT NULL COMMENT '/',
+  `demand` varchar(100) DEFAULT NULL COMMENT '需求',
+  `followup` text COMMENT '跟进',
+  `beginDate` date DEFAULT NULL COMMENT '/',
+  `kehuid` char(8) DEFAULT NULL COMMENT '编号',
+  `phone` varchar(15) DEFAULT NULL COMMENT '联系方式',
+  `xingz` varchar(10) DEFAULT NULL COMMENT '性质',
+  `remarks` varchar(100) DEFAULT NULL COMMENT '备注',
+  `hrid` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `workID_key` (`kehuid`),
+  KEY `hrid` (`hrid`),
+  CONSTRAINT `kehu_ibfk_1` FOREIGN KEY (`hrid`) REFERENCES `hr` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=1950 DEFAULT CHARSET=utf8;
+
+/*Data for the table `kehu` */
+
+insert  into `kehu`(`id`,`name`,`gender`,`birthday`,`demand`,`followup`,`beginDate`,`kehuid`,`phone`,`xingz`,`remarks`,`hrid`) values (1,'张三三','男','2020-09-03','120平20000/平，城南','9月5日通过微信联系修改需求为','2020-09-07','40000001','13599999999','上门客户','',12),(1948,'李思思','女',NULL,'长租一套，3w一年','9月7日通过电话约好下周看房时间',NULL,'40000002','15888888888','介绍客户',NULL,10),(1949,'王五五','男',NULL,'某某学区房100平','9月1日XXXXXXXXXXXXXXXXXXXXXXXXXX；\r\n9月2日XXXXXXXXXXXXXXXXXXXXxx',NULL,'40000003','15388888888','上门客户',NULL,5);
+
+/*Table structure for table `kehu_a` */
+
+DROP TABLE IF EXISTS `kehu_a`;
+
+CREATE TABLE `kehu_a` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'id',
+  `kehuid` char(8) DEFAULT NULL COMMENT '编号',
+  `kfjl` varchar(200) DEFAULT NULL COMMENT '看房记录',
+  `kfdate` date DEFAULT NULL COMMENT '时间',
+  PRIMARY KEY (`id`),
+  KEY `workID_key` (`kehuid`),
+  CONSTRAINT `kehu_a_ibfk_2` FOREIGN KEY (`kehuid`) REFERENCES `kehu` (`kehuid`) ON DELETE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=1950 DEFAULT CHARSET=utf8;
+
+/*Data for the table `kehu_a` */
+
+insert  into `kehu_a`(`id`,`kehuid`,`kfjl`,`kfdate`) values (1,'40000001',NULL,NULL),(1948,'40000002',NULL,NULL),(1949,'40000003',NULL,NULL);
+
 /*Table structure for table `menu` */
 
 DROP TABLE IF EXISTS `menu`;
@@ -177,7 +224,7 @@ CREATE TABLE `menu` (
 
 /*Data for the table `menu` */
 
-insert  into `menu`(`id`,`url`,`path`,`component`,`name`,`iconCls`,`parentId`,`enabled`) values (1,'/',NULL,NULL,'所有',NULL,NULL,1),(2,'/','/home','Home','二手房管理','fa fa-home',1,1),(3,'/','/home','Home','新房管理','fa fa-home',1,1),(4,'/','/home','Home','客户管理','fa fa-user-circle-o',1,1),(6,'/','/home','Home','系统管理','fa fa-windows',1,1),(7,'/employee/basic/**','/emp/basic','EmpBasic','出售房源信息',NULL,2,1),(8,'/employee/chuzu/**','/emp/chuzu','EmpChuzu','出租房源信息',NULL,2,1),(9,'/employee/basic/**','/emp/basic2','EmpBasic2','出售房源',NULL,2,1),(10,'/employee/chuzu/**','/emp/chuzu2','EmpChuzu2','出租房源',NULL,2,1),(11,'/newhouse/basic/**','/new/inf','NewInf','报备管理',NULL,3,1),(12,'/kehu/basic/**','/kehu/baisc','KehuBasic','客户信息',NULL,4,1),(13,'/kehu/allkehu/**','/kehu/allkehu','KehuAll','所有客户信息',NULL,4,1),(26,'/system/basic/hr/**','/sys/hr','SysHr','人员管理',NULL,6,1),(32,'/system/basic/role/**','/sys/role','SysRole','权限管理',NULL,6,1);
+insert  into `menu`(`id`,`url`,`path`,`component`,`name`,`iconCls`,`parentId`,`enabled`) values (1,'/',NULL,NULL,'所有',NULL,NULL,1),(2,'/','/home','Home','二手房管理','fa fa-home',1,1),(3,'/','/home','Home','新房管理','fa fa-home',1,1),(4,'/','/home','Home','客户管理','fa fa-user-circle-o',1,1),(6,'/','/home','Home','系统管理','fa fa-windows',1,1),(7,'/employee/basic/**','/emp/basic','EmpBasic','出售房源信息',NULL,2,1),(8,'/employee/chuzu/**','/emp/chuzu','EmpChuzu','出租房源信息',NULL,2,1),(9,'/employee/basic/**','/emp/basic2','EmpBasic2','出售房源',NULL,2,1),(10,'/employee/chuzu/**','/emp/chuzu2','EmpChuzu2','出租房源',NULL,2,1),(11,'/newinfo/basic/**','/new/inf','NewInf','报备管理',NULL,3,1),(12,'/kehu/basic/**','/kehu/baisc','KehuBasic','客户信息',NULL,4,1),(13,'/kehu/allkehu/**','/kehu/allkehu','KehuAll','所有客户信息',NULL,4,1),(14,'/newinfo/basic/**','/new/inf2','NewInf2','报备信息',NULL,3,1),(26,'/system/basic/hr/**','/sys/hr','SysHr','人员管理',NULL,6,1),(32,'/system/basic/role/**','/sys/role','SysRole','权限管理',NULL,6,1);
 
 /*Table structure for table `menu_role` */
 
@@ -192,11 +239,34 @@ CREATE TABLE `menu_role` (
   KEY `rid` (`rid`),
   CONSTRAINT `menu_role_ibfk_1` FOREIGN KEY (`mid`) REFERENCES `menu` (`id`),
   CONSTRAINT `menu_role_ibfk_2` FOREIGN KEY (`rid`) REFERENCES `role` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=582 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=614 DEFAULT CHARSET=utf8;
 
 /*Data for the table `menu_role` */
 
-insert  into `menu_role`(`id`,`mid`,`rid`) values (529,7,6),(530,8,6),(531,9,6),(532,10,6),(533,11,6),(534,12,6),(535,13,6),(536,26,6),(537,32,6),(568,7,3),(569,8,3),(570,11,3),(571,13,3),(572,26,3),(573,32,3),(574,9,2),(575,10,2),(576,11,2),(577,12,2),(578,7,1),(579,8,1),(580,11,1),(581,12,1);
+insert  into `menu_role`(`id`,`mid`,`rid`) values (582,7,1),(583,8,1),(584,11,1),(585,12,1),(590,7,3),(591,8,3),(592,11,3),(593,13,3),(594,26,3),(595,32,3),(596,7,6),(597,8,6),(598,9,6),(599,10,6),(600,11,6),(601,14,6),(602,12,6),(603,13,6),(604,26,6),(605,32,6),(610,9,2),(611,10,2),(612,14,2),(613,12,2);
+
+/*Table structure for table `newinfo` */
+
+DROP TABLE IF EXISTS `newinfo`;
+
+CREATE TABLE `newinfo` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name1` varchar(10) DEFAULT NULL COMMENT '客户名字',
+  `dates` date DEFAULT NULL COMMENT '时间',
+  `name2` varchar(50) DEFAULT NULL COMMENT '项目名称',
+  `mianji` varchar(20) DEFAULT NULL COMMENT '面积',
+  `people1` varchar(20) DEFAULT NULL COMMENT '带看人',
+  `workid` char(8) DEFAULT NULL COMMENT '编号',
+  `people2` varchar(20) DEFAULT NULL COMMENT '对接人',
+  `phone` varchar(15) DEFAULT NULL COMMENT '联系方式',
+  `remarks` varchar(100) DEFAULT NULL COMMENT '备注',
+  PRIMARY KEY (`id`),
+  KEY `workID_key` (`workid`)
+) ENGINE=InnoDB AUTO_INCREMENT=1951 DEFAULT CHARSET=utf8;
+
+/*Data for the table `newinfo` */
+
+insert  into `newinfo`(`id`,`name1`,`dates`,`name2`,`mianji`,`people1`,`workid`,`people2`,`phone`,`remarks`) values (1,'张一的','2020-08-21','滨江123','105','张三五','20000001','王五','13599999999','少时诵诗书'),(1948,'测试','2020-09-08','玲珑湾213','120','测试','20000002','王宇','15888888888',NULL),(1949,'张二','2020-09-08','！@#￥%……&','110','李四','20000003','王武','15388888888',NULL);
 
 /*Table structure for table `position` */
 
