@@ -79,12 +79,12 @@
       <if test="name != null" >
         #{name,jdbcType=VARCHAR},
       </if>
-      <if test="demand != null" >
-        #{demand,jdbcType=VARCHAR},
-      </if>
       <if test="gender != null" >
         #{gender,jdbcType=CHAR},
       </if>
+       <if test="demand != null" >
+      #{demand,jdbcType=VARCHAR},
+    </if>
       <if test="followup != null" >
         #{followup,jdbcType=VARCHAR},
       </if>
@@ -135,7 +135,7 @@
   <update id="updateByPrimaryKey" parameterType="com.yzy.pmservice.pojo.Kehu" >
     update kehu
     set name = #{name,jdbcType=VARCHAR},
-      gender = #{gender,jdbcType=VARCHAR},
+      gender = #{gender,jdbcType=CHAR},
       demand = #{demand,jdbcType=VARCHAR},
       followup = #{followup,jdbcType=VARCHAR},
       xingz = #{xingz,jdbcType=VARCHAR},
@@ -165,4 +165,5 @@
   <select id="getKehuAByKeHuId" resultType="com.yzy.pmservice.pojo.Kehu_a">
     select * from kehu_a where kehuid = #{kehuid}
   </select>
+
 </mapper>
