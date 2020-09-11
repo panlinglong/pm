@@ -162,4 +162,7 @@
   <select id="maxWorkID" resultType="java.lang.Integer">
     SELECT MAX(kehuid) FROM kehu
   </select>
+  <select id="getKehuAByKeHuId" resultType="com.yzy.pmservice.pojo.Kehu_a">
+    select * from kehu_a where kehuid = #{kehuid}
+  </select>
 </mapper>

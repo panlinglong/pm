@@ -3,6 +3,7 @@ package com.yzy.pmservice.pojo;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import java.util.Date;
+import java.util.List;
 
 public class Kehu {
     /** id*/
@@ -38,6 +39,10 @@ public class Kehu {
 
     /** 编号*/
     private String kehuid;
+
+    List<Kehu_a> kehuAs;
+
+
 
     public String getRemarks() {
         return remarks;
@@ -127,4 +132,13 @@ public class Kehu {
     public void setPhone(String phone) {
         this.phone = phone;
     }
+
+    public List<Kehu_a> getKehuAs() {
+        return kehuAs;
+    }
+
+    public void setKehuAs(List<Kehu_a> kehuAs) {
+        this.kehuAs = kehuAs;
+    }
+
 }

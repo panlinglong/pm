@@ -2,7 +2,7 @@ package com.yzy.pmservice.mapper;
 
 
 import com.yzy.pmservice.pojo.Kehu;
-import com.yzy.pmservice.pojo.Newinfo;
+import com.yzy.pmservice.pojo.Kehu_a;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -25,4 +25,6 @@ public interface KehuMapper {
     Long getTotal(@Param("keyword") String keyword);
 
     Integer maxWorkID();
+
+    List<Kehu_a> getKehuAByKeHuId(String kehuid);
 }

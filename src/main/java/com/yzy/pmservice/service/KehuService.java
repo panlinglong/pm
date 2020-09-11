@@ -1,9 +1,8 @@
 package com.yzy.pmservice.service;
 
-import com.yzy.pmservice.mapper.EmployeeMapper;
 import com.yzy.pmservice.mapper.KehuMapper;
-import com.yzy.pmservice.pojo.Employee;
 import com.yzy.pmservice.pojo.Kehu;
+import com.yzy.pmservice.pojo.Kehu_a;
 import com.yzy.pmservice.pojo.RespPageBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,6 +20,10 @@ public class KehuService {
             page = (page-1)*size;
         }
         List<Kehu> data = kehuMapper.getKehuByPage(page,size,keyword);
+        for (Kehu kehu:data){
+            List<Kehu_a> kehu_as = kehuMapper.getKehuAByKeHuId(kehu.getKehuid());
+            kehu.setKehuAs(kehu_as);
+        }
         Long total = kehuMapper.getTotal(keyword);
         RespPageBean bean = new RespPageBean();
         bean.setData(data);
