@@ -46,6 +46,15 @@ public class KehuBaiscController {
         return RespBean.error("删除失败！");
     }
 
+    @DeleteMapping("/kehua/{id}")
+    public RespBean deleteKehuaByEid(@PathVariable Integer id){
+        if (kehuService.deleteKehuaByEid(id)==1){
+            return RespBean.ok("删除成功！");
+        }
+        return RespBean.error("删除失败！");
+    }
+
+
     @PutMapping("/")
     public RespBean updateKehu(@RequestBody Kehu kehu){
         if (kehuService.updateKehu(kehu)==1){

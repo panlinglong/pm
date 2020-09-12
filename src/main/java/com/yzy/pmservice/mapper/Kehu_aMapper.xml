@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yzy.pmservice.mapper.Kehu_aMapper" >
+  <resultMap id="BaseResultMap" type="com.yzy.pmservice.pojo.Kehu_a" >
+    <result column="id" property="id" jdbcType="INTEGER" />
+    <result column="kehuid" property="kehuid" jdbcType="CHAR" />
+    <result column="kfjl" property="kfjl" jdbcType="VARCHAR" />
+    <result column="kfdate" property="kfdate" jdbcType="DATE" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, kehuid, kfjl, kfdate
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.yzy.pmservice.pojo.Kehu_aExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from kehu_a
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.yzy.pmservice.pojo.Kehu_aExample" >
+    delete from kehu_a
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.yzy.pmservice.pojo.Kehu_a" >
+    insert into kehu_a (id, kehuid, kfjl, 
+      kfdate)
+    values (#{id,jdbcType=INTEGER}, #{kehuid,jdbcType=CHAR}, #{kfjl,jdbcType=VARCHAR}, 
+      #{kfdate,jdbcType=DATE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yzy.pmservice.pojo.Kehu_a" >
+    insert into kehu_a
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="kehuid != null" >
+        kehuid,
+      </if>
+      <if test="kfjl != null" >
+        kfjl,
+      </if>
+      <if test="kfdate != null" >
+        kfdate,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="kehuid != null" >
+        #{kehuid,jdbcType=CHAR},
+      </if>
+      <if test="kfjl != null" >
+        #{kfjl,jdbcType=VARCHAR},
+      </if>
+      <if test="kfdate != null" >
+        #{kfdate,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.yzy.pmservice.pojo.Kehu_aExample" resultType="java.lang.Integer" >
+    select count(*) from kehu_a
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update kehu_a
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.kehuid != null" >
+        kehuid = #{record.kehuid,jdbcType=CHAR},
+      </if>
+      <if test="record.kfjl != null" >
+        kfjl = #{record.kfjl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.kfdate != null" >
+        kfdate = #{record.kfdate,jdbcType=DATE},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update kehu_a
+    set id = #{record.id,jdbcType=INTEGER},
+      kehuid = #{record.kehuid,jdbcType=CHAR},
+      kfjl = #{record.kfjl,jdbcType=VARCHAR},
+      kfdate = #{record.kfdate,jdbcType=DATE}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <delete id="deleteKehuaById" parameterType="java.lang.Integer" >
+    delete from kehu_a
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+</mapper>

@@ -8,24 +8,24 @@ public class Kehu_a {
     /** id*/
     private Integer id;
 
-    /**日期 */
-    @JsonFormat(pattern = "yyyy-MM-dd",timezone = "Asia/Shanghai")
-    private Date kfdate;
-
-    /** 内容*/
-    private String kfjl;
-
     /** 编号*/
     private String kehuid;
 
+    /** 看房记录*/
+    private String kfjl;
 
-    public Date getKfdate() {
-        return kfdate;
+    /** 时间*/
+    @JsonFormat(pattern = "yyyy-MM-dd",timezone = "Asia/Shanghai")
+    private Date kfdate;
+
+    public Integer getId() {
+        return id;
     }
 
-    public void setKfdate(Date kfdate) {
-        this.kfdate = kfdate;
+    public void setId(Integer id) {
+        this.id = id;
     }
+
     public String getKehuid() {
         return kehuid;
     }
@@ -39,6 +39,14 @@ public class Kehu_a {
     }
 
     public void setKfjl(String kfjl) {
-        this.kfjl = kfjl;
+        this.kfjl = kfjl == null ? null : kfjl.trim();
+    }
+
+    public Date getKfdate() {
+        return kfdate;
+    }
+
+    public void setKfdate(Date kfdate) {
+        this.kfdate = kfdate;
     }
 }

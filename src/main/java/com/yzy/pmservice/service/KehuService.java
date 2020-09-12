@@ -1,12 +1,14 @@
 package com.yzy.pmservice.service;
 
 import com.yzy.pmservice.mapper.KehuMapper;
+import com.yzy.pmservice.mapper.Kehu_aMapper;
 import com.yzy.pmservice.pojo.Kehu;
 import com.yzy.pmservice.pojo.Kehu_a;
 import com.yzy.pmservice.pojo.RespPageBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 @Service
@@ -14,6 +16,9 @@ public class KehuService {
 
     @Autowired
     private KehuMapper kehuMapper;
+
+    @Resource
+    private Kehu_aMapper kehu_aMapper;
 
     public RespPageBean getKehuByPage(Integer page, Integer size,String keyword) {
         if (page!=null && size!=null){
@@ -45,12 +50,16 @@ public class KehuService {
         return kehuMapper.deleteByPrimaryKey(id);
     }
 
+    public Integer deleteKehuaByEid(Integer id) {
+        return kehu_aMapper.deleteKehuaById(id);
+    }
+
     public Integer updateKehu(Kehu kehu) {
         return kehuMapper.updateByPrimaryKeySelective(kehu);
     }
 
     public Integer addKehuA(Kehu_a kehu_a){
-        Integer result = kehuMapper.addKehuAByKehuId(kehu_a);
+        Integer result = kehu_aMapper.insert(kehu_a);
         return result;
     }
 }
