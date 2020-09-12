@@ -12,7 +12,11 @@ public interface KehuMapper {
 
     int insert(Kehu record);
 
+
+
     int insertSelective(Kehu record);
+
+
 
     Kehu selectByPrimaryKey(Integer id);
 
@@ -22,9 +26,12 @@ public interface KehuMapper {
 
     List<Kehu> getKehuByPage(@Param("page") Integer page,@Param("size") Integer size,@Param("keyword") String keyword);
 
+    List<Kehu> getMyKehuByPage(@Param("page") Integer page,@Param("size") Integer size,@Param("keyword") String keyword,@Param("keyid") Integer keyid);
+
     Long getTotal(@Param("keyword") String keyword);
 
     Integer maxWorkID();
+
 
     List<Kehu_a> getKehuAByKeHuId(String kehuid);
 

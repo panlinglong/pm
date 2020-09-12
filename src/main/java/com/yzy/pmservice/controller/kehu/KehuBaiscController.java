@@ -20,6 +20,11 @@ public class KehuBaiscController {
         return kehuService.getKehuByPage(page,size,keyword);
     }
 
+    @GetMapping("/mykehu")
+    public RespPageBean getMyKehuByPage(@RequestParam(defaultValue = "1") Integer page,@RequestParam(defaultValue = "10") Integer size,@RequestParam String keyword){
+        return kehuService.getMyKehuByPage(page,size,keyword);
+    }
+
     @PostMapping("/")
     public RespBean addKehu(@RequestBody Kehu kehu){
         if (kehuService.addKehu(kehu)==1){
@@ -27,6 +32,7 @@ public class KehuBaiscController {
         }
         return RespBean.error("添加失败！");
     }
+
 
     @PostMapping("/kehua")
     public RespBean addKehuA(@RequestBody Kehu_a kehu_a){
@@ -68,6 +74,11 @@ public class KehuBaiscController {
     @GetMapping("/maxWorkID")
     public RespBean maxWorkID(){
         return RespBean.ok("",String.format("%08d",kehuService.maxWorkID()+1));
+    }
+
+    @GetMapping("/myHrID")
+    public RespBean myHrID(){
+        return RespBean.ok("",kehuService.myHrID());
     }
 
 
