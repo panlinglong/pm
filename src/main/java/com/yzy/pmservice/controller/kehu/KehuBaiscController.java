@@ -1,9 +1,6 @@
 package com.yzy.pmservice.controller.kehu;
 
-import com.yzy.pmservice.pojo.Employee;
-import com.yzy.pmservice.pojo.Kehu;
-import com.yzy.pmservice.pojo.RespBean;
-import com.yzy.pmservice.pojo.RespPageBean;
+import com.yzy.pmservice.pojo.*;
 import com.yzy.pmservice.service.EmployeeService;
 import com.yzy.pmservice.service.KehuService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +27,16 @@ public class KehuBaiscController {
         }
         return RespBean.error("添加失败！");
     }
+
+    @PostMapping("/kehua")
+    public RespBean addKehuA(@RequestBody Kehu_a kehu_a){
+        if (kehuService.addKehuA(kehu_a) == 1){
+            return RespBean.ok("添加成功！");
+        }
+        return RespBean.error("添加失败！");
+    }
+
+
 
     @DeleteMapping("/{id}")
     public RespBean deleteKehuByEid(@PathVariable Integer id){

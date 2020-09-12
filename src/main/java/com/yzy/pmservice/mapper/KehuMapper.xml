@@ -165,5 +165,11 @@
   <select id="getKehuAByKeHuId" resultType="com.yzy.pmservice.pojo.Kehu_a">
     select * from kehu_a where kehuid = #{kehuid}
   </select>
+<insert id="addKehuAByKehuId" parameterType="com.yzy.pmservice.pojo.Kehu_a">
+  insert into kehu_a(id, kehuid, kfdate, kfjl)
+  values (#{id,jdbcType=INTEGER}, #{kehuid,jdbcType=CHAR},
+      #{kfdate,jdbcType=DATE}, #{kfjl,jdbcType=VARCHAR},
+      )
+</insert>
 
 </mapper>

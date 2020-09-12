@@ -48,4 +48,9 @@ public class KehuService {
     public Integer updateKehu(Kehu kehu) {
         return kehuMapper.updateByPrimaryKeySelective(kehu);
     }
+
+    public Integer addKehuA(Kehu_a kehu_a){
+        Integer result = kehuMapper.addKehuAByKehuId(kehu_a);
+        return result;
+    }
 }

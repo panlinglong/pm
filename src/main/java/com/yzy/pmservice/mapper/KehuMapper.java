@@ -27,4 +27,6 @@ public interface KehuMapper {
     Integer maxWorkID();
 
     List<Kehu_a> getKehuAByKeHuId(String kehuid);
+
+    int addKehuAByKehuId(Kehu_a record);
 }
