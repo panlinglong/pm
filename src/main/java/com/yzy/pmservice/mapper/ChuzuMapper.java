@@ -5,6 +5,7 @@ import com.yzy.pmservice.pojo.Chuzu;
 import com.yzy.pmservice.pojo.Employee;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.Date;
 import java.util.List;
 
 public interface ChuzuMapper {
@@ -14,7 +15,7 @@ public interface ChuzuMapper {
 
     int insertSelective(Chuzu record);
 
-    Employee selectByPrimaryKey(Integer id);
+    Chuzu selectByPrimaryKey(Integer id);
 
     int updateByPrimaryKeySelective(Chuzu record);
 
@@ -22,7 +23,9 @@ public interface ChuzuMapper {
 
     List<Chuzu> getChuzuByPage(@Param("page") Integer page,@Param("size") Integer size,@Param("keyword") String keyword);
 
-    Long getTotal(@Param("keyword") String keyword);
+    List<Chuzu> getChuzu();
 
+    Long getTotal(@Param("keyword") String keyword);
+//DateDiff(dd,endDate,getdate())&lt;=30
     Integer maxWorkID();
 }

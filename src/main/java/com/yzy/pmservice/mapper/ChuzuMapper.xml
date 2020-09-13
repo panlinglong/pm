@@ -25,9 +25,8 @@
     <result column="workid" property="workid" jdbcType="CHAR" />
   </resultMap>
   <resultMap id="AllChuzuInfo" type="com.yzy.pmservice.pojo.Chuzu" extends="BaseResultMap">
-
-
-
+  </resultMap>
+  <resultMap id="ChuzuInfo" type="com.yzy.pmservice.pojo.Chuzu" extends="BaseResultMap">
   </resultMap>
   <sql id="Base_Column_List" >
     id, name, fangs, endDate, idCard, email, xuequ, jsjt1, jsjt2, jsjt3, xingz,
@@ -285,6 +284,10 @@
     </if>
      limit #{page},#{size}
   </select>
+  <select id="getChuzu" resultMap="ChuzuInfo">
+    SELECT e.* from chuzu e where 1=1
+  </select>
+
   <select id="getTotal" resultType="java.lang.Long">
     select count(*) from chuzu
     <if test="keyword!=null and keyword!=''">

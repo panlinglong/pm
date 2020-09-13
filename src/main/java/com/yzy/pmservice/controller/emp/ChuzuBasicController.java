@@ -23,6 +23,11 @@ public class ChuzuBasicController {
         return chuzuService.getChuzuByPage(page,size,keyword);
     }
 
+    @GetMapping("/endtime")
+    public RespPageBean scheduledTask(){
+        return chuzuService.scheduledTask();
+    }
+
     @PostMapping("/")
     public RespBean addChuzu(@RequestBody Chuzu chuzu){
         if (chuzuService.addChuzu(chuzu)==1){
