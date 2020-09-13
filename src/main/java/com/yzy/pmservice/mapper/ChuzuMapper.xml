@@ -284,8 +284,8 @@
     </if>
      limit #{page},#{size}
   </select>
-  <select id="getChuzu" resultMap="ChuzuInfo">
-    SELECT e.* from chuzu e where 1=1
+  <select id="getChuzu" resultMap="BaseResultMap">
+    SELECT e.* from chuzu e
   </select>
 
   <select id="getTotal" resultType="java.lang.Long">
