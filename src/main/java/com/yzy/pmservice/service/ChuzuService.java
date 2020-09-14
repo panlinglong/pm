@@ -25,6 +25,7 @@ public class ChuzuService {
     @Autowired
     private ChuzuMapper chuzuMapper;
 
+
     public RespPageBean getChuzuByPage(Integer page, Integer size,String keyword) {
         if (page!=null && size!=null){
             page = (page-1)*size;
