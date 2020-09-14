@@ -4,15 +4,19 @@ import com.yzy.pmservice.pojo.*;
 import com.yzy.pmservice.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
+import java.io.File;
+import java.io.IOException;
+
+@CrossOrigin
 @RestController
 @RequestMapping("/employee/basic")
 public class EmpBasicController {
 
     @Autowired
     private EmployeeService employeeService;
-
-
 
     @GetMapping("/")
     public RespPageBean getEmployeeByPage(@RequestParam(defaultValue = "1") Integer page,@RequestParam(defaultValue = "10") Integer size,@RequestParam String keyword){
