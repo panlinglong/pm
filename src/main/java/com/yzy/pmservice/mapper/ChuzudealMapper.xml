@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yzy.pmservice.mapper.ChuzudealMapper" >
+  <resultMap id="BaseResultMap" type="com.yzy.pmservice.pojo.Chuzudeal" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="place" property="place" jdbcType="VARCHAR" />
+    <result column="jiafang" property="jiafang" jdbcType="VARCHAR" />
+    <result column="yifang" property="yifang" jdbcType="VARCHAR" />
+    <result column="jsfz" property="jsfz" jdbcType="VARCHAR" />
+    <result column="ysfz" property="ysfz" jdbcType="VARCHAR" />
+    <result column="phone1" property="phone1" jdbcType="VARCHAR" />
+    <result column="price1" property="price1" jdbcType="VARCHAR" />
+    <result column="price2" property="price2" jdbcType="VARCHAR" />
+    <result column="phone2" property="phone2" jdbcType="VARCHAR" />
+    <result column="details" property="details" jdbcType="VARCHAR" />
+    <result column="beginDate" property="beginDate" jdbcType="DATE" />
+    <result column="endDate" property="endDate" jdbcType="DATE" />
+    <result column="payway" property="payway" jdbcType="VARCHAR" />
+    <result column="workid" property="workid" jdbcType="CHAR" />
+  </resultMap>
+  <resultMap id="AllChuzudealInfo" type="com.yzy.pmservice.pojo.Chuzudeal" extends="BaseResultMap">
+
+
+
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, place, jiafang, yifang, jsfz, ysfz, phone1, price1, price2, beginDate, endDate, workid, phone2, payway, details
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />
+    from chuzudeal
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from chuzudeal
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.yzy.pmservice.pojo.Chuzudeal" >
+    insert into chuzudeal (id, place, jiafang, yifang, jsfz, ysfz, phone1, price1, price2, beginDate, endDate, workid, phone2, payway, details
+      )
+    values (#{id,jdbcType=INTEGER}, #{place,jdbcType=VARCHAR}, #{jiafang,jdbcType=VARCHAR}, #{yifang,jdbcType=VARCHAR},
+      #{jsfz,jdbcType=VARCHAR}, #{ysfz,jdbcType=VARCHAR}, #{phone1,jdbcType=VARCHAR}, #{phone2,jdbcType=VARCHAR}, #{payway,jdbcType=VARCHAR},
+      #{price1,jdbcType=VARCHAR}, #{beginDate,jdbcType=DATE}, #{endDate,jdbcType=DATE}, #{workid,jdbcType=CHAR}, #{price2,jdbcType=VARCHAR}, #{details,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.yzy.pmservice.pojo.Chuzudeal" >
+    insert into chuzudeal
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="place != null" >
+        place,
+      </if>
+      <if test="jiafang != null" >
+        jiafang,
+      </if>
+      <if test="yifang != null" >
+        yifang,
+      </if>
+      <if test="jsfz != null" >
+        jsfz,
+      </if>
+      <if test="ysfz != null" >
+        ysfz,
+      </if>
+      <if test="phone1 != null" >
+        phone1,
+      </if>
+      <if test="phone2 != null" >
+        phone2,
+      </if>
+      <if test="beginDate != null" >
+        beginDate,
+      </if>
+      <if test="endDate != null" >
+        endDate,
+      </if>
+      <if test="workid != null" >
+        workid,
+      </if>
+      <if test="price1 != null" >
+        price1,
+      </if>
+      <if test="price2 != null" >
+        price2,
+      </if>
+      <if test="payway != null" >
+        payway,
+      </if>
+      <if test="details != null" >
+        details,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="place != null" >
+        #{place,jdbcType=VARCHAR},
+      </if>
+      <if test="jiafang != null" >
+        #{jiafang,jdbcType=VARCHAR},
+      </if>
+      <if test="yifang != null" >
+        #{yifang,jdbcType=VARCHAR},
+      </if>
+      <if test="jsfz != null" >
+        #{jsfz,jdbcType=VARCHAR},
+      </if>
+      <if test="ysfz != null" >
+        #{ysfz,jdbcType=VARCHAR},
+      </if>
+      <if test="phone1 != null" >
+        #{phone1,jdbcType=VARCHAR},
+      </if>
+      <if test="phone2 != null" >
+        #{phone2,jdbcType=VARCHAR},
+      </if>
+      <if test="beginDate != null" >
+        #{beginDate,jdbcType=DATE},
+      </if>
+      <if test="endDate != null" >
+        #{endDate,jdbcType=DATE},
+      </if>
+      <if test="workid != null" >
+        #{workid,jdbcType=CHAR},
+      </if>
+      <if test="price1 != null" >
+        #{price1,jdbcType=VARCHAR},
+      </if>
+      <if test="price2 != null" >
+        #{price2,jdbcType=VARCHAR},
+      </if>
+      <if test="payway != null" >
+        #{payway,jdbcType=VARCHAR},
+      </if>
+      <if test="details != null" >
+        #{details,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yzy.pmservice.pojo.Chuzudeal" >
+    update chuzudeal
+    <set >
+      <if test="place != null" >
+        place = #{place,jdbcType=VARCHAR},
+      </if>
+      <if test="jiafang != null" >
+        jiafang = #{jiafang,jdbcType=VARCHAR},
+      </if>
+      <if test="yifang != null" >
+        yifang = #{yifang,jdbcType=VARCHAR},
+      </if>
+      <if test="jsfz != null" >
+        jsfz = #{jsfz,jdbcType=VARCHAR},
+      </if>
+      <if test="ysfz != null" >
+        ysfz = #{ysfz,jdbcType=VARCHAR},
+      </if>
+      <if test="phone1 != null" >
+        phone1 = #{phone1,jdbcType=VARCHAR},
+      </if>
+      <if test="phone2 != null" >
+        phone2 = #{phone2,jdbcType=VARCHAR},
+      </if>
+      <if test="beginDate != null" >
+        beginDate = #{beginDate,jdbcType=DATE},
+      </if>
+      <if test="endDate != null" >
+        endDate = #{endDate,jdbcType=DATE},
+      </if>
+      <if test="workid != null" >
+        workid = #{workid,jdbcType=CHAR},
+      </if>
+      <if test="price1 != null" >
+        price1 = #{price1,jdbcType=VARCHAR},
+      </if>
+      <if test="price2 != null" >
+        price2 = #{price2,jdbcType=VARCHAR},
+      </if>
+      <if test="payway != null" >
+        payway = #{payway,jdbcType=VARCHAR},
+      </if>
+      <if test="details != null" >
+        details = #{details,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yzy.pmservice.pojo.Chuzudeal" >
+    update chuzudeal
+    set place = #{place,jdbcType=VARCHAR},
+      jiafang = #{jiafang,jdbcType=VARCHAR},
+      yifang = #{yifang,jdbcType=VARCHAR},
+      jsfz = #{jsfz,jdbcType=VARCHAR},
+      ysfz = #{ysfz,jdbcType=VARCHAR},
+      phone1 = #{phone1,jdbcType=VARCHAR},
+      phone2 = #{phone2,jdbcType=VARCHAR},
+      beginDate = #{beginDate,jdbcType=DATE},
+      endDate = #{endDate,jdbcType=DATE},
+      workid = #{workid,jdbcType=CHAR},
+      price1 = #{price1,jdbcType=VARCHAR},
+      price2 = #{price2,jdbcType=VARCHAR},
+      payway = #{payway,jdbcType=VARCHAR},
+      details = #{details,jdbcType=VARCHAR},
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="getChuzudealByPage" resultMap="AllChuzudealInfo">
+    SELECT e.* from chuzudeal e where 1=1
+    <if test="keyword!=null and keyword!=''">
+      and e.place like concat('%',#{keyword},'%')
+    </if>
+     limit #{page},#{size}
+  </select>
+  <select id="getTotal" resultType="java.lang.Long">
+    select count(*) from chuzudeal
+    <if test="keyword!=null and keyword!=''">
+      where place like concat('%',#{keyword},'%')
+    </if>
+  </select>
+  <select id="maxWorkID" resultType="java.lang.Integer">
+    SELECT MAX(workid) FROM chuzudeal
+  </select>
+</mapper>
