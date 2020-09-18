@@ -2,7 +2,9 @@ package com.yzy.pmservice.service;
 
 import com.yzy.pmservice.mapper.HrMapper;
 import com.yzy.pmservice.mapper.Hr_roleMapper;
+import com.yzy.pmservice.pojo.Empdeal;
 import com.yzy.pmservice.pojo.Hr;
+import com.yzy.pmservice.pojo.Kehu;
 import com.yzy.pmservice.utils.HrUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -25,6 +27,8 @@ public class HrService implements UserDetailsService {
     public  List<Hr> getAllHrs(String keywords) {
         return hrMapper.getAllHrs(HrUtils.getCurrentHr().getId(),keywords);
     }
+
+
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -49,4 +53,12 @@ public class HrService implements UserDetailsService {
     public Integer deleteHrById(Integer id) {
         return hrMapper.deleteByPrimaryKey(id);
     }
+
+    public Integer addHr(Hr hr) {
+
+        Integer result = hrMapper.insertSelective(hr);
+
+        return result;
+    }
+
 }

@@ -1,5 +1,6 @@
 package com.yzy.pmservice.controller.system.basic;
 
+import com.yzy.pmservice.pojo.Chuzudeal;
 import com.yzy.pmservice.pojo.Hr;
 import com.yzy.pmservice.pojo.RespBean;
 import com.yzy.pmservice.pojo.Role;
@@ -53,5 +54,13 @@ public class HrController {
             return RespBean.ok("删除成功！");
         }
         return RespBean.error("删除失败！");
+    }
+
+    @PostMapping("/")
+    public RespBean addHr(@RequestBody Hr hr){
+        if (hrService.addHr(hr)==1){
+            return RespBean.ok("添加成功！");
+        }
+        return RespBean.error("添加失败！");
     }
 }
