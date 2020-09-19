@@ -110,4 +110,20 @@ public class EmpBasicController {
         return newSrc;
     }
 
+    @DeleteMapping("/img/{id}")
+    public RespBean deleteImgpathByEid(@PathVariable Integer id){
+        if (employeeService.deleteImgpathByEid(id)==1){
+            return RespBean.ok("删除成功！");
+        }
+        return RespBean.error("删除失败！");
+    }
+
+    @PostMapping("/img")
+    public RespBean addKehuA(@RequestBody Imgpath imgpath){
+        if (employeeService.addImgpath(imgpath) == 1){
+            return RespBean.ok("添加成功！");
+        }
+        return RespBean.error("添加失败！");
+    }
+
 }
