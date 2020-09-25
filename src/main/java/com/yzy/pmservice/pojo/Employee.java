@@ -3,6 +3,7 @@ package com.yzy.pmservice.pojo;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import java.util.Date;
+import java.util.List;
 
 public class Employee {
     /** id*/
@@ -69,6 +70,16 @@ public class Employee {
 
     /** 备注*/
     private String remarks;
+
+    List<Imgpath> imgpaths;
+
+    public List<Imgpath> getImgpaths() {
+        return imgpaths;
+    }
+
+    public void setImgpaths(List<Imgpath> imgpaths) {
+        this.imgpaths = imgpaths;
+    }
 
     public String getRemarks() {
         return remarks;

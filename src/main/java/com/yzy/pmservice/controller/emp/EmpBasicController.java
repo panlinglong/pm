@@ -85,8 +85,10 @@ public class EmpBasicController {
 
             e.printStackTrace();
         }
-        System.out.println("str: "+str+" newName: "+newName);
-        String newSrc = "src/main/resources/images/"+newName;
+
+        String newSrc = "D:/yzy/PMSystem/PMSystem/pmui/static/images/"+newName;
+        String vueSrc = "/images/"+newName;
+        System.out.println(newSrc);
         try
         {
 
@@ -107,23 +109,36 @@ public class EmpBasicController {
         }
 
 
-        return newSrc;
+        return vueSrc;
     }
 
-    @DeleteMapping("/img/{id}")
-    public RespBean deleteImgpathByEid(@PathVariable Integer id){
-        if (employeeService.deleteImgpathByEid(id)==1){
-            return RespBean.ok("删除成功！");
-        }
-        return RespBean.error("删除失败！");
-    }
-
-    @PostMapping("/img")
-    public RespBean addKehuA(@RequestBody Imgpath imgpath){
+//    @DeleteMapping("/img/{id}")
+//    public RespBean deleteImgpathByEid(@PathVariable Integer id){
+//        if (employeeService.deleteImgpathByEid(id)==1){
+//            return RespBean.ok("删除成功！");
+//        }
+//        return RespBean.error("删除失败！");
+//    }
+//
+    @PostMapping("/addImg")
+    public RespBean addImg(@RequestBody Imgpath imgpath){
         if (employeeService.addImgpath(imgpath) == 1){
             return RespBean.ok("添加成功！");
         }
         return RespBean.error("添加失败！");
+    }
+
+    @GetMapping("/getImg")
+    public RespPageBean getImg(@RequestParam String workid){
+        return employeeService.getImg(workid);
+    }
+
+    @DeleteMapping("/deleteImg/{id}")
+    public RespBean deleteById(@PathVariable Integer id){
+        if (employeeService.deleteById(id)==1){
+            return RespBean.ok("删除成功！");
+        }
+        return RespBean.error("删除失败！");
     }
 
 }

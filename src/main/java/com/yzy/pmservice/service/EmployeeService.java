@@ -2,14 +2,13 @@ package com.yzy.pmservice.service;
 
 import com.yzy.pmservice.mapper.EmployeeMapper;
 import com.yzy.pmservice.mapper.ImgpathMapper;
-import com.yzy.pmservice.pojo.Employee;
-import com.yzy.pmservice.pojo.Imgpath;
-import com.yzy.pmservice.pojo.Kehu_a;
-import com.yzy.pmservice.pojo.RespPageBean;
+import com.yzy.pmservice.pojo.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -51,12 +50,28 @@ public class EmployeeService {
         return employeeMapper.updateByPrimaryKeySelective(employee);
     }
 
-    public Integer deleteImgpathByEid(Integer id) {
-        return imgpathMapper.deleteImgpathById(id);
+    public Integer deleteById(Integer id) {
+        String imgpaths = "D:/yzy/PMSystem/PMSystem/pmui/static"+imgpathMapper.getImgPathById(id);
+        File file = new File(imgpaths);
+        file.delete();
+        return imgpathMapper.deleteById(id);
     }
 
     public Integer addImgpath(Imgpath imgpath) {
-        Integer result = imgpathMapper.insert(imgpath);
+
+        Integer result = imgpathMapper.insertSelective(imgpath);
         return result;
     }
+    public RespPageBean getImg(String workid){
+        List<Imgpath> data = imgpathMapper.getImgByWorkid(workid);
+//        String[] a = new String[20];
+//        for(int i=0;i<data.size();i++){
+//            System.out.println(data.get(i).getImagepath());
+//            a[i] = data.get(i).getImagepath();
+//        }
+        RespPageBean bean = new RespPageBean();
+        bean.setData(data);
+        return bean;
+    }
+
 }
