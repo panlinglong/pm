@@ -4,7 +4,7 @@
   <resultMap id="BaseResultMap" type="com.yzy.pmservice.pojo.Hr" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="name" property="name" jdbcType="VARCHAR" />
-    <result column="phone" property="phone" jdbcType="CHAR" />
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
     <result column="telephone" property="telephone" jdbcType="VARCHAR" />
     <result column="address" property="address" jdbcType="VARCHAR" />
     <result column="enabled" property="enabled" jdbcType="BIT" />
@@ -51,7 +51,7 @@
       telephone, address, enabled,
       username, password,
       remark)
-    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{phone,jdbcType=CHAR},
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR},
       #{telephone,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{enabled,jdbcType=BIT},
       #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR})
   </insert>
@@ -94,7 +94,7 @@
         #{name,jdbcType=VARCHAR},
       </if>
       <if test="phone != null" >
-        #{phone,jdbcType=CHAR},
+        #{phone,jdbcType=VARCHAR},
       </if>
       <if test="telephone != null" >
         #{telephone,jdbcType=VARCHAR},
@@ -123,7 +123,7 @@
         name = #{name,jdbcType=VARCHAR},
       </if>
       <if test="phone != null" >
-        phone = #{phone,jdbcType=CHAR},
+        phone = #{phone,jdbcType=VARCHAR},
       </if>
       <if test="telephone != null" >
         telephone = #{telephone,jdbcType=VARCHAR},
@@ -149,7 +149,7 @@
   <update id="updateByPrimaryKey" parameterType="com.yzy.pmservice.pojo.Hr" >
     update hr
     set name = #{name,jdbcType=VARCHAR},
-      phone = #{phone,jdbcType=CHAR},
+      phone = #{phone,jdbcType=VARCHAR},
       telephone = #{telephone,jdbcType=VARCHAR},
       address = #{address,jdbcType=VARCHAR},
       enabled = #{enabled,jdbcType=BIT},

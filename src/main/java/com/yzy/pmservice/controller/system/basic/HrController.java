@@ -34,6 +34,14 @@ public class HrController {
             return RespBean.error("更新失败！");
         }
     }
+    @PutMapping("/changpw")
+    public RespBean updateHrPw(@RequestBody Hr hr){
+        if (hrService.updatePw(hr) == 1){
+            return RespBean.ok("更新成功！");
+        }else {
+            return RespBean.error("更新失败！");
+        }
+    }
 
     @GetMapping("/roles")
     public List<Role> getAllRoles(){

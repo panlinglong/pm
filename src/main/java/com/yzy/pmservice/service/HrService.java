@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -44,6 +45,14 @@ public class HrService implements UserDetailsService {
         return hrMapper.updateByPrimaryKeySelective(hr);
     }
 
+    public Integer updatePw(Hr hr) {
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        hr.setPassword(encoder.encode(hr.getPassword()));
+        hr.setEnabled(true);
+        System.out.println(hr.getPassword());
+        return hrMapper.updateByPrimaryKeySelective(hr);
+    }
+
     @Transactional
     public boolean updateHrRole(Integer hrid, Integer[] rids) {
         hrRoleMapper.deleteByHrid(hrid);
@@ -55,7 +64,7 @@ public class HrService implements UserDetailsService {
     }
 
     public Integer addHr(Hr hr) {
-
+        hr.setEnabled(true);
         Integer result = hrMapper.insertSelective(hr);
 
         return result;
