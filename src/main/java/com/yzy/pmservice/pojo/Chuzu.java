@@ -14,7 +14,7 @@ public class Chuzu {
     /** 付款方式*/
     private String fangs;
 
-    /**不用 */
+    /**到期时间 */
     @JsonFormat(pattern = "yyyy-MM-dd",timezone = "Asia/Shanghai")
     private Date endDate;
 
@@ -30,7 +30,7 @@ public class Chuzu {
     /** 电话*/
     private String phone2;
 
-    /** 不用*/
+    /** 起租时间*/
     @JsonFormat(pattern = "yyyy-MM-dd",timezone = "Asia/Shanghai")
     private Date begindate;
 
@@ -67,6 +67,44 @@ public class Chuzu {
     /** 房源性质*/
     private String xingz;
 
+    /** 备注*/
+    private String remarks;
+
+    /** 上传者*/
+    private String upname;
+
+    /** 起租时间*/
+    @JsonFormat(pattern = "yyyy-MM-dd",timezone = "Asia/Shanghai")
+    private Date payDate;
+
+    /** 起租时间*/
+    @JsonFormat(pattern = "yyyy-MM-dd",timezone = "Asia/Shanghai")
+    private Date alarmDate;
+
+    public String getUpname() {
+        return upname;
+    }
+
+    public void setUpname(String upname) {
+        this.upname = upname;
+    }
+
+    public Date getPayDate() {
+        return payDate;
+    }
+
+    public void setPayDate(Date payDate) {
+        this.payDate = payDate;
+    }
+
+    public Date getAlarmDate() {
+        return alarmDate;
+    }
+
+    public void setAlarmDate(Date alarmDate) {
+        this.alarmDate = alarmDate;
+    }
+
     public String getXingz() {
         return xingz;
     }
@@ -74,9 +112,6 @@ public class Chuzu {
     public void setXingz(String xingz) {
         this.xingz = xingz;
     }
-
-    /** 备注*/
-    private String remarks;
 
     public String getRemarks() {
         return remarks;

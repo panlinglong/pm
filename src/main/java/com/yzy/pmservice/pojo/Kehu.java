@@ -40,9 +40,18 @@ public class Kehu {
     /** 编号*/
     private String kehuid;
 
+    /** 分类*/
+    private String types;
+
     List<Kehu_a> kehuAs;
 
+    public String getTypes() {
+        return types;
+    }
 
+    public void setTypes(String types) {
+        this.types = types;
+    }
 
     public String getRemarks() {
         return remarks;

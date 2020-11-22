@@ -77,6 +77,16 @@ public class Employee {
         return imgpaths;
     }
 
+    private String upname;
+
+    public String getUpname() {
+        return upname;
+    }
+
+    public void setUpname(String upname) {
+        this.upname = upname;
+    }
+
     public void setImgpaths(List<Imgpath> imgpaths) {
         this.imgpaths = imgpaths;
     }

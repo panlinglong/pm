@@ -6,22 +6,20 @@
     <result column="name" property="name" jdbcType="VARCHAR" />
     <result column="gender" property="gender" jdbcType="CHAR" />
     <result column="demand" property="demand" jdbcType="VARCHAR" />
-
     <result column="followup" property="followup" jdbcType="VARCHAR" />
     <result column="xingz" property="xingz" jdbcType="VARCHAR" />
-
-
     <result column="phone" property="phone" jdbcType="VARCHAR" />
     <result column="remarks" property="remarks" jdbcType="VARCHAR" />
     <result column="kehuid" property="kehuid" jdbcType="CHAR" />
     <result column="hrid" property="hrid" jdbcType="INTEGER" />
+    <result column="types" property="types" jdbcType="VARCHAR" />
   </resultMap>
   <resultMap id="AllKehuInfo" type="com.yzy.pmservice.pojo.Kehu" extends="BaseResultMap">
   </resultMap>
   <resultMap id="MyKehuInfo" type="com.yzy.pmservice.pojo.Kehu" extends="BaseResultMap">
   </resultMap>
   <sql id="Base_Column_List" >
-    id, name, gender, demand, followup, xingz, kehuid, phone, remarks, hrid
+    id, name, gender, demand, followup, xingz, kehuid, phone, remarks, hrid, types
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select
@@ -75,6 +73,9 @@
       <if test="remarks != null" >
         remarks,
       </if>
+      <if test="types != null" >
+        types,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -106,6 +107,9 @@
       </if>
       <if test="hrid != null" >
         #{hrid,jdbcType=INTEGER},
+      </if>
+      <if test="types != null" >
+        #{types,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -140,6 +144,9 @@
       <if test="hrid != null" >
         hrid = #{hrid,jdbcType=INTEGER},
       </if>
+      <if test="types != null" >
+        types = #{types,jdbcType=VARCHAR},
+      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
@@ -151,10 +158,10 @@
       followup = #{followup,jdbcType=VARCHAR},
       xingz = #{xingz,jdbcType=VARCHAR},
       phone = #{phone,jdbcType=VARCHAR},
-
       kehuid = #{kehuid,jdbcType=CHAR},
-     hrid = #{hrid,jdbcType=INTEGER},
+      hrid = #{hrid,jdbcType=INTEGER},
       remarks = #{remarks,jdbcType=VARCHAR},
+      types = #{types,jdbcType=VARCHAR},
     where id = #{id,jdbcType=INTEGER}
   </update>
   <select id="getKehuByPage" resultMap="AllKehuInfo">

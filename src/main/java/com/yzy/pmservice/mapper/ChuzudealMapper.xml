@@ -17,6 +17,10 @@
     <result column="endDate" property="endDate" jdbcType="DATE" />
     <result column="payway" property="payway" jdbcType="VARCHAR" />
     <result column="workid" property="workid" jdbcType="CHAR" />
+    <result column="price3" property="price3" jdbcType="VARCHAR" />
+    <result column="price4" property="price4" jdbcType="VARCHAR" />
+    <result column="upname" property="upname" jdbcType="VARCHAR" />
+    <result column="tuiyong" property="tuiyong" jdbcType="VARCHAR" />
   </resultMap>
   <resultMap id="AllChuzudealInfo" type="com.yzy.pmservice.pojo.Chuzudeal" extends="BaseResultMap">
 
@@ -24,7 +28,7 @@
 
   </resultMap>
   <sql id="Base_Column_List" >
-    id, place, jiafang, yifang, jsfz, ysfz, phone1, price1, price2, beginDate, endDate, workid, phone2, payway, details
+    id, place, jiafang, yifang, jsfz, ysfz, phone1, price1, price2, beginDate, endDate, workid, phone2, payway, details, price3, price4, upname, tuiyong
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select
@@ -92,6 +96,18 @@
       <if test="details != null" >
         details,
       </if>
+      <if test="price3 != null" >
+        price3,
+      </if>
+      <if test="price4 != null" >
+        price4,
+      </if>
+      <if test="upname != null" >
+        upname,
+      </if>
+      <if test="tuiyong != null" >
+        tuiyong,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -138,6 +154,18 @@
       </if>
       <if test="details != null" >
         #{details,jdbcType=VARCHAR},
+      </if>
+      <if test="price3 != null" >
+        #{price3,jdbcType=VARCHAR},
+      </if>
+      <if test="price4 != null" >
+        #{price4,jdbcType=VARCHAR},
+      </if>
+      <if test="upname != null" >
+        #{upname,jdbcType=VARCHAR},
+      </if>
+      <if test="tuiyong != null" >
+        #{tuiyong,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -186,6 +214,18 @@
       <if test="details != null" >
         details = #{details,jdbcType=VARCHAR},
       </if>
+      <if test="price3 != null" >
+        price3 = #{price3,jdbcType=VARCHAR},
+      </if>
+      <if test="price4 != null" >
+        price4 = #{price4,jdbcType=VARCHAR},
+      </if>
+      <if test="upname != null" >
+        upname = #{upname,jdbcType=VARCHAR},
+      </if>
+      <if test="tuiyong != null" >
+        tuiyong = #{tuiyong,jdbcType=VARCHAR},
+      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
@@ -205,6 +245,10 @@
       price2 = #{price2,jdbcType=VARCHAR},
       payway = #{payway,jdbcType=VARCHAR},
       details = #{details,jdbcType=VARCHAR},
+      price3 = #{price3,jdbcType=VARCHAR},
+      price4 = #{price4,jdbcType=VARCHAR},
+      upname = #{upname,jdbcType=VARCHAR},
+      tuiyong = #{tuiyong,jdbcType=VARCHAR},
     where id = #{id,jdbcType=INTEGER}
   </update>
   <select id="getChuzudealByPage" resultMap="AllChuzudealInfo">

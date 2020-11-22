@@ -73,16 +73,47 @@ public class ChuzuService {
             Chuzu chuzu = data.get(i);
             //计算时间
             Date b = chuzu.getEndDate();
-            int a =  (int) ((b.getTime() - date.getTime()) / (1000*3600*24));
-            if(a<=30){
-                //将数据存到chuzu1
-               chuzu1.add(chuzu);
+            if(b!=null) {
+                int a = (int) ((b.getTime() - date.getTime()) / (1000 * 3600 * 24));
+                if (a != 0 && a <= 30) {
+                    //将数据存到chuzu1
+                    chuzu1.add(chuzu);
+                }
             }
-
         }
 
         RespPageBean bean = new RespPageBean();
         bean.setData(chuzu1);
+        return bean;
+    }
+
+
+    public RespPageBean payAlarm(){
+        //得到数据
+        List<Chuzu> data = chuzuMapper.getChuzu();
+
+        //chuzu1存放合适的数据
+        List chuzu2 = new ArrayList();
+
+        //处理当前时间
+        Date date = new Date();
+
+        //取出数据
+        for (int i = 0;i < data.size();i ++){
+            Chuzu chuzu = data.get(i);
+            //计算时间
+            Date b = chuzu.getAlarmDate();
+            if(b!=null) {
+                int a = (int) ((b.getTime() - date.getTime()) / (1000 * 3600 * 24));
+                if (a <= 1) {
+                    //将数据存到chuzu1
+                    chuzu2.add(chuzu);
+                }
+            }
+        }
+
+        RespPageBean bean = new RespPageBean();
+        bean.setData(chuzu2);
         return bean;
     }
 }

@@ -21,7 +21,10 @@
     <result column="jsjt1" property="jsjt1" jdbcType="VARCHAR" />
     <result column="jsjt2" property="jsjt2" jdbcType="VARCHAR" />
     <result column="jsjt3" property="jsjt3" jdbcType="VARCHAR" />
+    <result column="upname" property="upname" jdbcType="VARCHAR" />
     <result column="beginDate" property="begindate" jdbcType="DATE" />
+    <result column="payDate" property="payDate" jdbcType="DATE" />
+    <result column="alarmDate" property="alarmDate" jdbcType="DATE" />
     <result column="workid" property="workid" jdbcType="CHAR" />
   </resultMap>
   <resultMap id="AllChuzuInfo" type="com.yzy.pmservice.pojo.Chuzu" extends="BaseResultMap">
@@ -30,7 +33,7 @@
   </resultMap>
   <sql id="Base_Column_List" >
     id, name, fangs, endDate, idCard, email, xuequ, jsjt1, jsjt2, jsjt3, xingz,
-    people, beginDate, workid, car, reno, price, looktime, intr, phone2, remarks
+    people, beginDate, workid, car, reno, price, looktime, intr, phone2, remarks, payDate, alarmDate
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select
@@ -45,13 +48,13 @@
   <insert id="insert" parameterType="com.yzy.pmservice.pojo.Chuzu" >
     insert into chuzu (id, name, fangs,
       endDate, idCard, email, phone2, xuequ, jsjt1, jsjt2, jsjt3, xingz,
-      people, beginDate, workid, car, reno, price, looktime, intr, remarks
+      people, beginDate, workid, car, reno, price, looktime, intr, remarks, upname, payDate, alarmDate
       )
-    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{fangs,jdbcType=CHAR}, #{xuequ,jdbcType=VARCHAR}, #{jsjt1,jdbcType=VARCHAR},
-      #{endDate,jdbcType=DATE}, #{idcard,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{phone2,jdbcType=VARCHAR}, #{jsjt2,jdbcType=VARCHAR},
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{fangs,jdbcType=CHAR},  #{endDate,jdbcType=DATE}, #{idcard,jdbcType=VARCHAR},#{email,jdbcType=VARCHAR}, #{xuequ,jdbcType=VARCHAR}, #{jsjt1,jdbcType=VARCHAR},
+      #{phone2,jdbcType=VARCHAR}, #{jsjt2,jdbcType=VARCHAR},
       #{people,jdbcType=VARCHAR}, #{begindate,jdbcType=DATE}, #{workid,jdbcType=CHAR}, #{jsjt3,jdbcType=VARCHAR}, #{remarks,jdbcType=VARCHAR},
       #{car,jdbcType=VARCHAR}, #{reno,jdbcType=CHAR}, #{price,jdbcType=VARCHAR}, #{looktime,jdbcType=VARCHAR}, #{intr,jdbcType=CHAR},
-      #{xingz,jdbcType=VARCHAR}
+      #{xingz,jdbcType=VARCHAR}, #{payDate,jdbcType=DATE}, #{alarmDate,jdbcType=DATE}, #{upname,jdbcType=VARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.yzy.pmservice.pojo.Chuzu" >
@@ -120,6 +123,15 @@
       <if test="remarks != null" >
         remarks,
       </if>
+      <if test="upname != null" >
+        upname,
+      </if>
+      <if test="payDate != null" >
+        payDate,
+      </if>
+      <if test="alarmDate != null" >
+        alarmDate,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -184,6 +196,15 @@
       </if>
       <if test="remarks != null" >
         #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="upname != null" >
+        #{upname,jdbcType=VARCHAR},
+      </if>
+      <if test="payDate != null" >
+        #{payDate,jdbcType=DATE},
+      </if>
+      <if test="alarmDate != null" >
+        #{alarmDate,jdbcType=DATE},
       </if>
     </trim>
   </insert>
@@ -250,6 +271,15 @@
       <if test="remarks != null" >
         remarks = #{remarks,jdbcType=VARCHAR},
       </if>
+      <if test="upname != null" >
+        upname = #{upname,jdbcType=VARCHAR},
+      </if>
+      <if test="payDate != null" >
+        payDate = #{payDate,jdbcType=DATE},
+      </if>
+      <if test="alarmDate != null" >
+        alarmDate = #{alarmDate,jdbcType=DATE},
+      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
@@ -275,6 +305,9 @@
       intr = #{intr,jdbcType=CHAR},
       xingz = #{xingz,jdbcType=VARCHAR},
       remarks = #{remarks,jdbcType=VARCHAR},
+      upname = #{upper,jdbcType=VARCHAR},
+      payDate = #{payDate,jdbcType=DATE},
+      alarmDate = #{alarmDate,jdbcType=DATE},
     where id = #{id,jdbcType=INTEGER}
   </update>
   <select id="getChuzuByPage" resultMap="AllChuzuInfo">

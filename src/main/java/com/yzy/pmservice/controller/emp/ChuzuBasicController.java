@@ -28,6 +28,9 @@ public class ChuzuBasicController {
         return chuzuService.scheduledTask();
     }
 
+    @GetMapping("/payalarm")
+    public RespPageBean payAlarm(){return chuzuService.payAlarm();}
+
     @PostMapping("/")
     public RespBean addChuzu(@RequestBody Chuzu chuzu){
         if (chuzuService.addChuzu(chuzu)==1){

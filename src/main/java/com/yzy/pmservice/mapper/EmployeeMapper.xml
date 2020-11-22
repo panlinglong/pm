@@ -23,6 +23,7 @@
     <result column="xingz" property="xingz" jdbcType="VARCHAR" />
     <result column="beginDate" property="begindate" jdbcType="DATE" />
     <result column="workid" property="workid" jdbcType="CHAR" />
+    <result column="upname" property="upname" jdbcType="VARCHAR" />
   </resultMap>
   <resultMap id="AllEmployeeInfo" type="com.yzy.pmservice.pojo.Employee" extends="BaseResultMap">
 
@@ -31,7 +32,7 @@
   </resultMap>
   <sql id="Base_Column_List" >
     id, name, gender, birthday, idCard, email, xuequ, jsjt1, jsjt2, jsjt3,remarks,
-    people, beginDate, workid, car, reno, price, looktime, intr, phone2, xingz
+    people, beginDate, workid, car, reno, price, looktime, intr, phone2, xingz, upname
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select
@@ -120,6 +121,9 @@
       <if test="remarks != null" >
         remarks,
       </if>
+      <if test="upname != null" >
+        upname,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -184,6 +188,9 @@
       </if>
       <if test="remarks != null" >
         #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="upname != null" >
+        #{upname,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -250,6 +257,9 @@
       <if test="intr != null" >
         intr = #{intr,jdbcType=CHAR},
       </if>
+      <if test="upname != null" >
+        upname = #{upname,jdbcType=VARCHAR},
+      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
@@ -275,6 +285,7 @@
       xingz = #{xingz,jdbcType=VARCHAR},
       remarks = #{remarks,jdbcType=VARCHAR},
       intr = #{intr,jdbcType=CHAR},
+      upname = #{upname,jdbcType=VARCHAR},
     where id = #{id,jdbcType=INTEGER}
   </update>
   <select id="getEmployeeByPage" resultMap="AllEmployeeInfo">

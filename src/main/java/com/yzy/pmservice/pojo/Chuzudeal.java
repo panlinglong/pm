@@ -53,9 +53,52 @@ public class Chuzudeal {
     /** 付款方式*/
     private String payway;
 
-
     /** 合同录入*/
     private String details;
+
+    /** 应收佣金*/
+    private String price3;
+
+    /** 实收佣金*/
+    private String price4;
+
+    /** 上传者*/
+    private String upname;
+
+    /** 是否退佣*/
+    private String tuiyong;
+
+    public String getTuiyong() {
+        return tuiyong;
+    }
+
+    public void setTuiyong(String tuiyong) {
+        this.tuiyong = tuiyong;
+    }
+
+    public String getPrice3() {
+        return price3;
+    }
+
+    public void setPrice3(String price3) {
+        this.price3 = price3;
+    }
+
+    public String getPrice4() {
+        return price4;
+    }
+
+    public void setPrice4(String price4) {
+        this.price4 = price4;
+    }
+
+    public String getUpname() {
+        return upname;
+    }
+
+    public void setUpname(String upname) {
+        this.upname = upname;
+    }
 
     public Date getEndDate() {
         return endDate;
