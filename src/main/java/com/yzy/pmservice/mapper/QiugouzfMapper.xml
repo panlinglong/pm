@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yzy.pmservice.mapper.QiugouzfMapper" >
+  <resultMap id="BaseResultMap" type="com.yzy.pmservice.pojo.Qiugouzf" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
+    <result column="summary" property="summary" jdbcType="VARCHAR" />
+    <result column="details" property="details" jdbcType="VARCHAR" />
+    <result column="workid" property="workid" jdbcType="CHAR" />
+    <result column="upname" property="upname" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="AllQiugouzfInfo" type="com.yzy.pmservice.pojo.Qiugouzf" extends="BaseResultMap">
+
+
+
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, name, phone, summary, details, workid, upname
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />
+    from qiugouzf
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from qiugouzf
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.yzy.pmservice.pojo.Qiugouzf" >
+    insert into qiugouzf (id, name, phone, summary, details, workid, upname
+      )
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{summary,jdbcType=VARCHAR}, #{details,jdbcType=VARCHAR},
+      #{workid,jdbcType=CHAR}, #{upname,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.yzy.pmservice.pojo.Qiugouzf" >
+    insert into qiugouzf
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="phone != null" >
+        phone,
+      </if>
+      <if test="summary != null" >
+        summary,
+      </if>
+      <if test="details != null" >
+        details,
+      </if>
+      <if test="workid != null" >
+        workid,
+      </if>
+      <if test="upname != null" >
+        upname,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=CHAR},
+      </if>
+      <if test="summary != null" >
+        #{summary,jdbcType=VARCHAR},
+      </if>
+      <if test="details != null" >
+        #{details,jdbcType=VARCHAR},
+      </if>
+      <if test="workid != null" >
+        #{workid,jdbcType=CHAR},
+      </if>
+      <if test="upname != null" >
+        #{upname,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yzy.pmservice.pojo.Qiugouzf" >
+    update qiugouzf
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="summary != null" >
+        summary = #{summary,jdbcType=VARCHAR},
+      </if>
+      <if test="details != null" >
+        details = #{details,jdbcType=VARCHAR},
+      </if>
+      <if test="workid != null" >
+        workid = #{workid,jdbcType=CHAR},
+      </if>
+      <if test="upname != null" >
+        upname = #{upname,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yzy.pmservice.pojo.Qiugouzf" >
+    update qiugouzf
+    set name = #{name,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      summary = #{summary,jdbcType=VARCHAR},
+      details = #{details,jdbcType=VARCHAR},
+      workid = #{workid,jdbcType=CHAR},
+      upname = #{upname,jdbcType=VARCHAR},
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="getQiugouzfByPage" resultMap="AllQiugouzfInfo">
+    SELECT e.* from qiugouzf e where 1=1
+    <if test="keyword!=null and keyword!=''">
+      and e.name like concat('%',#{keyword},'%')
+    </if>
+     limit #{page},#{size}
+  </select>
+  <select id="getTotal" resultType="java.lang.Long">
+    select count(*) from qiugouzf
+    <if test="keyword!=null and keyword!=''">
+      where name like concat('%',#{keyword},'%')
+    </if>
+  </select>
+  <select id="maxWorkID" resultType="java.lang.Integer">
+    SELECT MAX(workid) FROM qiugouzf
+  </select>
+</mapper>
