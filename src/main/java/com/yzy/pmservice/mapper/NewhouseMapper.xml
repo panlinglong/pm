@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yzy.pmservice.mapper.NewhouseMapper" >
+  <resultMap id="BaseResultMap" type="com.yzy.pmservice.pojo.Newhouse" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="mianji" property="mianji" jdbcType="VARCHAR" />
+    <result column="price" property="price" jdbcType="VARCHAR" />
+    <result column="xuequ" property="xuequ" jdbcType="VARCHAR" />
+    <result column="huxing" property="huxing" jdbcType="VARCHAR" />
+    <result column="tiliang" property="tiliang" jdbcType="VARCHAR" />
+    <result column="wuye" property="wuye" jdbcType="VARCHAR" />
+    <result column="abc1" property="abc1" jdbcType="VARCHAR" />
+    <result column="abc2" property="abc2" jdbcType="VARCHAR" />
+    <result column="remarks" property="remarks" jdbcType="VARCHAR" />
+    <result column="opentime" property="opentime" jdbcType="DATE" />
+    <result column="workid" property="workid" jdbcType="CHAR" />
+    <result column="upname" property="upname" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="AllNewhouseInfo" type="com.yzy.pmservice.pojo.Newhouse" extends="BaseResultMap">
+
+
+
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, name, mianji, price, xuequ, huxing, tiliang, wuye,abc1,
+    abc2, remarks, opentime, workid, upname
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />
+    from newhouse
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from newhouse
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.yzy.pmservice.pojo.Newhouse" >
+    insert into newhouse (id, name, mianji, price, xuequ, huxing, tiliang, wuye,abc1,
+    abc2, remarks, opentime, workid, upname
+      )
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{mianji,jdbcType=VARCHAR}, #{price,jdbcType=VARCHAR}, #{xuequ,jdbcType=VARCHAR},
+      #{huxing,jdbcType=VARCHAR}, #{tiliang,jdbcType=VARCHAR}, #{wuye,jdbcType=VARCHAR}, #{abc1,jdbcType=VARCHAR}, #{abc2,jdbcType=VARCHAR},
+      #{remarks,jdbcType=VARCHAR}, #{opentime,jdbcType=DATE}, #{workid,jdbcType=CHAR}, #{upname,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.yzy.pmservice.pojo.Newhouse" >
+    insert into newhouse
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="mianji != null" >
+        mianji,
+      </if>
+      <if test="price != null" >
+        price,
+      </if>
+      <if test="xuequ != null" >
+        xuequ,
+      </if>
+      <if test="huxing != null" >
+        huxing,
+      </if>
+      <if test="tiliang != null" >
+        tiliang,
+      </if>
+      <if test="wuye != null" >
+        wuye,
+      </if>
+      <if test="abc1 != null" >
+        abc1,
+      </if>
+      <if test="abc2 != null" >
+        abc2,
+      </if>
+      <if test="remarks != null" >
+        remarks,
+      </if>
+      <if test="opentime != null" >
+        opentime,
+      </if>
+      <if test="workid != null" >
+        workid,
+      </if>
+      <if test="upname != null" >
+        upname,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="mianji != null" >
+        #{mianji,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null" >
+        #{price,jdbcType=VARCHAR},
+      </if>
+      <if test="xuequ != null" >
+        #{xuequ,jdbcType=VARCHAR},
+      </if>
+      <if test="huxing != null" >
+        #{huxing,jdbcType=VARCHAR},
+      </if>
+      <if test="tiliang != null" >
+        #{tiliang,jdbcType=VARCHAR},
+      </if>
+      <if test="wuye != null" >
+        #{wuye,jdbcType=VARCHAR},
+      </if>
+      <if test="abc1 != null" >
+        #{abc1,jdbcType=VARCHAR},
+      </if>
+      <if test="abc2 != null" >
+        #{abc2,jdbcType=VARCHAR},
+      </if>
+      <if test="remarks != null" >
+        #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="opentime != null" >
+        #{opentime,jdbcType=DATE},
+      </if>
+      <if test="workid != null" >
+        #{workid,jdbcType=CHAR},
+      </if>
+      <if test="upname != null" >
+        #{upname,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yzy.pmservice.pojo.Newhouse" >
+    update newhouse
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="mianji != null" >
+        mianji = #{mianji,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null" >
+        price = #{price,jdbcType=VARCHAR},
+      </if>
+      <if test="xuequ != null" >
+        xuequ = #{xuequ,jdbcType=VARCHAR},
+      </if>
+      <if test="huxing != null" >
+        huxing = #{huxing,jdbcType=VARCHAR},
+      </if>
+      <if test="tiliang != null" >
+        tiliang = #{tiliang,jdbcType=VARCHAR},
+      </if>
+      <if test="wuye != null" >
+        wuye = #{wuye,jdbcType=VARCHAR},
+      </if>
+      <if test="abc1 != null" >
+        abc1 = #{abc1,jdbcType=VARCHAR},
+      </if>
+      <if test="abc2 != null" >
+        abc2 = #{abc2,jdbcType=VARCHAR},
+      </if>
+      <if test="remarks != null" >
+        remarks = #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="opentime != null" >
+        opentime = #{opentime,jdbcType=DATE},
+      </if>
+      <if test="workid != null" >
+        workid = #{workid,jdbcType=CHAR},
+      </if>
+      <if test="upname != null" >
+        upname = #{upname,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yzy.pmservice.pojo.Newhouse" >
+    update newhouse
+    set name = #{name,jdbcType=VARCHAR},
+      mianji = #{mianji,jdbcType=VARCHAR},
+      price = #{price,jdbcType=VARCHAR},
+      xuequ = #{xuequ,jdbcType=VARCHAR},
+      huxing = #{huxing,jdbcType=VARCHAR},
+      tiliang = #{tiliang,jdbcType=VARCHAR},
+      wuye = #{wuye,jdbcType=VARCHAR},
+      abc1 = #{abc1,jdbcType=VARCHAR},
+      abc2 = #{abc2,jdbcType=VARCHAR},
+      remarks = #{remarks,jdbcType=VARCHAR},
+      opentime = #{opentime,jdbcType=DATE},
+      workid = #{workid,jdbcType=CHAR},
+      upname = #{upname,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="getNewhouseByPage" resultMap="AllNewhouseInfo">
+    SELECT e.* from newhouse e where 1=1
+    <if test="keyword!=null and keyword!=''">
+      and e.name like concat('%',#{keyword},'%')
+    </if>
+     limit #{page},#{size}
+  </select>
+  <select id="getTotal" resultType="java.lang.Long">
+    select count(*) from newhouse
+    <if test="keyword!=null and keyword!=''">
+      where name like concat('%',#{keyword},'%')
+    </if>
+  </select>
+  <select id="maxWorkID" resultType="java.lang.Integer">
+    SELECT MAX(workid) FROM newhouse
+  </select>
+</mapper>

@@ -1,51 +1,51 @@
-package com.yzy.pmservice.controller.emp;
+package com.yzy.pmservice.controller.newinfo;
 
 import com.yzy.pmservice.pojo.*;
-import com.yzy.pmservice.service.EmployeeService;
+import com.yzy.pmservice.service.EmpdealService;
+import com.yzy.pmservice.service.NewhouseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.util.UUID;
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.UUID;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/employee/basic")
-public class EmpBasicController {
+@RequestMapping("/newinfo/info")
+public class NewhouseController {
 
     @Autowired
-    private EmployeeService employeeService;
+    private NewhouseService newhouseService;
 
     @GetMapping("/")
-    public RespPageBean getEmployeeByPage(@RequestParam(defaultValue = "1") Integer page,@RequestParam(defaultValue = "10") Integer size,@RequestParam String keyword){
-        return employeeService.getEmployeeByPage(page,size,keyword);
+    public RespPageBean getNewhouseByPage(@RequestParam(defaultValue = "1") Integer page,@RequestParam(defaultValue = "10") Integer size,@RequestParam String keyword){
+        return newhouseService.getNewhouseByPage(page,size,keyword);
     }
 
     @PostMapping("/")
-    public RespBean addEmp(@RequestBody Employee employee){
-        if (employeeService.addEmp(employee)==1){
+    public RespBean addNewhouse(@RequestBody Newhouse newhouse){
+        if (newhouseService.addNewhouse(newhouse)==1){
             return RespBean.ok("添加成功！");
         }
         return RespBean.error("添加失败！");
     }
 
     @DeleteMapping("/{id}")
-    public RespBean deleteEmpByEid(@PathVariable Integer id){
-        if (employeeService.deleteEmpByEid(id)==1){
+    public RespBean deleteNewhouseByEid(@PathVariable Integer id){
+        if (newhouseService.deleteNewhouseByEid(id)==1){
             return RespBean.ok("删除成功！");
         }
         return RespBean.error("删除失败！");
     }
 
     @PutMapping("/")
-    public RespBean updateEmp(@RequestBody Employee employee){
-        if (employeeService.updateEmp(employee)==1){
+    public RespBean updateEmp(@RequestBody Newhouse newhouse){
+        if (newhouseService.updateNewhouse(newhouse)==1){
             return RespBean.ok("更新成功！");
         }
         return RespBean.error("更新失败！");
@@ -55,12 +55,11 @@ public class EmpBasicController {
 
     @GetMapping("/maxWorkID")
     public RespBean maxWorkID(){
-        return RespBean.ok("",String.format("%08d",employeeService.maxWorkID()+1));
+        return RespBean.ok("",String.format("%08d",newhouseService.maxWorkID()+1));
     }
 
-
     @RequestMapping("/img")
-    public String FileUpdate (HttpServletRequest request,MultipartFile file) {
+    public String FileUpdate (HttpServletRequest request, MultipartFile file) {
         String str=request.getServletContext().getRealPath("/images/");
         //得到上传时的文件名字
         String originalname=file.getOriginalFilename();
@@ -114,8 +113,8 @@ public class EmpBasicController {
 
 
     @PostMapping("/addImg")
-    public RespBean addImg(@RequestBody Imgpath imgpath){
-        if (employeeService.addImgpath(imgpath) == 1){
+    public RespBean addImg(@RequestBody Hximg hximg){
+        if (newhouseService.addImgpath(hximg) == 1){
             return RespBean.ok("添加成功！");
         }
         return RespBean.error("添加失败！");
@@ -123,15 +122,14 @@ public class EmpBasicController {
 
     @GetMapping("/getImg")
     public RespPageBean getImg(@RequestParam String workid){
-        return employeeService.getImg(workid);
+        return newhouseService.getImg(workid);
     }
 
     @DeleteMapping("/deleteImg/{id}")
     public RespBean deleteById(@PathVariable Integer id){
-        if (employeeService.deleteById(id)==1){
+        if (newhouseService.deleteById(id)==1){
             return RespBean.ok("删除成功！");
         }
         return RespBean.error("删除失败！");
     }
-
 }
